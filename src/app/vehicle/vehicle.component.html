@@ -1,0 +1,112 @@
+<!-- <div class="container">
+  <div class="row">
+    <div class="col-md-4 mb-4" *ngFor="let vehicle of vehicleTypes">
+      <div class="card" style="width: 100%">
+        <img
+          class="card-img-top"
+          src="https://img.autocarindia.com/model/uploads/modelimages/Hyundai-Creta-030420250118.jpg?w=350&h=250&q=85&c=1"
+          alt="Card image"
+          style="width: 100%; height: 200px; object-fit: cover"
+        />
+        <div class="card-body">
+          <div class="row mb-2">
+            <div class="col-6 text-start fw-bold">{{ vehicle.Name }}</div>
+            <div class="col-6 text-end">{{ vehicle.Type }}</div>
+          </div>
+          <div class="row mb-2">
+            <div class="col-6 text-start fw-bold">Year</div>
+            <div class="col-6 text-end">{{ vehicle.Year }}</div>
+          </div>
+          <div class="row mb-2">
+            <div class="col-6 text-start fw-bold">Next Service date</div>
+            <div class="col-6 text-end">{{ vehicle.nextservice }}</div>
+          </div>
+          <div class="row mb-2">
+            <div class="col-6 text-start fw-bold">Next EMI</div>
+            <div class="col-6 text-end">{{ vehicle.Next_Emi }}</div>
+          </div>
+          <div class="row mt-3">
+            <div class="col-6">
+              <button class="btn btn-success w-100">View Doc.</button>
+            </div>
+            <div class="col-6">
+              <button class="btn btn-primary w-100">Edit</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+<div class="container my-4">
+  <div class="row g-4">
+    <!-- Total Vehicles -->
+    <div class="col-6 col-md-3">
+      <div class="card border-success p-2" style="min-height: 80px">
+        <div class="card-body text-center">
+          <div class="mb-1">
+            <i class="bi bi-truck fs-4 text-success"></i>
+          </div>
+          <h6 class="card-title">Total Vehicles</h6>
+          <h4 class="card-text fw-bold">24</h4>
+        </div>
+        <div class="card-footer bg-light text-center">
+          <a class="text-success text-decoration-none fw-medium">View all</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Active Vehicles -->
+    <div class="col-6 col-md-3">
+      <div class="card border-success p-2" style="min-height: 80px">
+        <div class="card-body text-center">
+          <div class="mb-1">
+            <i class="bi bi-check-circle fs-4 text-success"></i>
+          </div>
+          <h6 class="card-title">Active Vehicles</h6>
+          <h4 class="card-text fw-bold">18</h4>
+        </div>
+        <div class="card-footer bg-light text-center">
+          <a class="text-success text-decoration-none fw-medium"
+            >View details</a
+          >
+        </div>
+      </div>
+    </div>
+
+    <!-- In Maintenance -->
+    <div class="col-6 col-md-3">
+      <div class="card border-warning p-2" style="min-height: 80px">
+        <div class="card-body text-center">
+          <div class="mb-1">
+            <i class="bi bi-tools fs-4 text-warning"></i>
+          </div>
+          <h5 class="card-title fw-bold">In Maintenance</h5>
+          <h4 class="card-text fw-bold">4</h4>
+        </div>
+        <div class="card-footer bg-light text-center">
+          <a class="text-warning text-decoration-none fw-medium"
+            >Schedule service</a
+          >
+        </div>
+      </div>
+    </div>
+
+    <!-- Inactive Vehicles -->
+    <div class="col-6 col-md-3">
+      <div class="card border p-2" style="min-height: 80px">
+        <div class="card-body text-center">
+          <div class="mb-1">
+            <i class="bi bi-x-circle fs-4 text-danger"></i>
+          </div>
+          <h5 class="card-title fw-bold">Inactive Vehicles</h5>
+          <h4 class="card-text fw-bold">2</h4>
+        </div>
+        <div class="card-footer bg-light text-center">
+          <a class="text-decoration-none fw-medium">View details</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

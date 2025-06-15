@@ -1,0 +1,39 @@
+.table-responsive {
+  border-radius: 16px;
+  box-shadow: 0 2px 16px rgba(60, 60, 60, 0.08);
+  background: #fff;
+  padding: 8px;
+  width: 100%;
+  min-width: 280px;
+}
+
+.sticky-header th {
+  position: sticky;
+  top: 0;
+  background-color: white;
+  z-index: 2;
+}
+
+.custom-table {
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.custom-table thead tr th {
+  border-top: none;
+  background: #f8fafc;
+  font-weight: 600;
+}
+
+.custom-table tbody tr {
+  transition: background 0.2s;
+}
+
+.custom-table tbody tr:hover {
+  background: #f1f5f9;
+}
+
+.custom-table td,
+.custom-table th {
+  vertical-align: middle;
+}

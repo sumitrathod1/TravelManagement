@@ -1,0 +1,42 @@
+<!-- Booking Card Example -->
+<div
+  class="bg-white rounded shadow-sm p-3 mb-3"
+  *ngFor="let booking of allBookngs"
+>
+  <div class="d-flex flex-wrap justify-content-between align-items-start gap-3">
+    <!-- Left: Customer Info -->
+    <div class="d-flex gap-3 align-items-start">
+      <!-- Text -->
+      <div>
+        <div class="fw-bold fs-6">{{ booking.customer.customerName }}</div>
+        <div class="text-muted small">
+          {{ booking.customer.customerNumber }}
+        </div>
+        <div class="d-flex gap-1 mt-1">
+          <span class="badge bg-success bg-opacity-25 text-success"
+            >Confirmed</span
+          >
+          <span class="badge bg-success bg-opacity-25 text-success">Paid</span>
+        </div>
+        <div class="text-muted small mt-1">
+          {{ booking.vehicle.vehicleName }} • {{ booking.user.employeeName }}
+        </div>
+      </div>
+    </div>
+
+    <!-- Right: Booking Info -->
+    <div class="text-end flex-grow-1" style="max-width: 220px">
+      <div class="text-muted small">Booking ID: {{ booking.bookingId }}</div>
+      <div class="fw-bold">{{ booking.travelDate }}</div>
+      <div class="small">{{ booking.traveltime }}</div>
+      <div class="d-flex justify-content-end gap-2 mt-2">
+        <button class="btn btn-outline-secondary btn-sm">
+          <i class="bi bi-eye"></i> Details
+        </button>
+        <button class="btn btn-primary btn-sm">Edit</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Duplicate the above block for more bookings, or use *ngFor for dynamic data -->

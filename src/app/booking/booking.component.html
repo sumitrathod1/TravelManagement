@@ -1,0 +1,31 @@
+<div class="container py-4">
+  <!-- Tabs -->
+  <ul class="nav nav-tabs mb-4">
+    <li class="nav-item">
+      <a class="nav-link active" href="#">All Bookings</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">Upcoming</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">Completed</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">Cancelled</a>
+    </li>
+    <li class="ms-auto d-flex align-items-center">
+      <input
+        class="form-control me-2"
+        type="search"
+        placeholder="Search bookings..."
+        style="width: 200px"
+      />
+      <button class="btn btn-outline-secondary" type="button">
+        <span class="bi bi-funnel"></span> Filter
+      </button>
+    </li>
+  </ul>
+  <div>
+    <app-booking-list></app-booking-list>
+  </div>
+</div>

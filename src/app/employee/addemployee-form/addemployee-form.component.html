@@ -1,0 +1,114 @@
+<div mat-dialog-title>Add Employee</div>
+<form [formGroup]="employeeForm" (ngSubmit)="onAddEmployeeFormSubmit()">
+  <div mat-dialog-content>
+    <div class="row">
+      <div class="col-sm-6">
+        <mat-form-field appearance="outline">
+          <mat-label>Driver Name</mat-label>
+          <input
+            matInput
+            type="text"
+            placeholder="Name"
+            formControlName="EmployeeName"
+          />
+        </mat-form-field>
+      </div>
+      <div class="col-sm-6">
+        <mat-form-field class="col-ms-6" appearance="outline">
+          <mat-label>User Name</mat-label>
+          <input matInput type="text" formControlName="UserName" />
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-6">
+        <mat-form-field appearance="outline">
+          <mat-label>Date Of Birth</mat-label>
+          <input matInput [matDatepicker]="picker" formControlName="DOB" />
+          <mat-datepicker-toggle
+            matSuffix
+            [for]="picker"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+      </div>
+
+      <div class="col-sm-6">
+        <mat-form-field appearance="outline">
+          <mat-label>Address</mat-label>
+          <input matInput type="text" formControlName="Address" />
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-6">
+        <mat-form-field>
+          <mat-label>Role</mat-label>
+          <mat-select formControlName="Role">
+            <mat-option>None</mat-option>
+            @for (vtypes of Role; track vtypes) {
+            <mat-option [value]="vtypes">{{ vtypes }}</mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="col-sm-6" appearance="outline">
+        <mat-form-field>
+          <mat-label>Licence</mat-label>
+          <mat-select formControlName="Licence">
+            <mat-option>None</mat-option>
+            @for (vtypes of Licence; track vtypes) {
+            <mat-option [value]="vtypes">{{ vtypes }}</mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-6">
+        <mat-form-field appearance="outline">
+          <mat-label>Email</mat-label>
+          <input
+            matInput
+            type="text"
+            placeholder="jhon@gmail.com"
+            formControlName="Email"
+          />
+        </mat-form-field>
+      </div>
+      <div class="col-sm-6">
+        <mat-form-field class="col-ms-6" appearance="outline">
+          <mat-label>Password</mat-label>
+          <input matInput type="text" formControlName="Password" />
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-6">
+        <mat-form-field appearance="outline">
+          <mat-label>Contact Number</mat-label>
+          <input
+            matInput
+            type="number"
+            placeholder="Name"
+            formControlName="Number"
+          />
+        </mat-form-field>
+      </div>
+      <div class="col-sm-6">
+        <mat-form-field class="col-ms-6" appearance="outline">
+          <mat-label>Salary</mat-label>
+          <input matInput type="number" formControlName="Salary" />
+        </mat-form-field>
+      </div>
+    </div>
+  </div>
+  <div mat-dialog-actions class="action">
+    <button mat-raised-button (click)="closeForm()">Cancel</button>
+    <button mat-raised-button color="primary" type="submit">Submit</button>
+  </div>
+</form>

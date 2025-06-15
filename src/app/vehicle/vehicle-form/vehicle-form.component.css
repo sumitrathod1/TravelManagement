@@ -1,0 +1,25 @@
+:host {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 16px; /* Add padding for spacing */
+  }
+
+  /* mat-grid-tile {
+    background: lightblue;
+  } */
+   .action{
+    button{
+      flex: 1;
+    }
+   }
+
+   .row{
+
+   
+    mat-form-field{
+     width: 100%;
+    }
+   }
+
+  

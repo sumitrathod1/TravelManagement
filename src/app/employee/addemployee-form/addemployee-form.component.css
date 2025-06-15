@@ -1,0 +1,13 @@
+.action{
+    button{
+      flex: 1;
+    }
+   }
+
+   .row{
+
+   
+    mat-form-field{
+     width: 100%;
+    }
+   }

@@ -1,0 +1,42 @@
+<div class="container py-3">
+  <div class="row">
+    <div class="col-12 col-md-8 mx-auto">
+      <h2 class="text-center mb-3">Drivers</h2>
+      <div class="row mb-2">
+        <div class="col-4 text-start">
+          <button class="btn btn-primary w-110">Active</button>
+        </div>
+        <div class="col-4 offset-4 text-end">
+          <button class="btn btn-primary w-100">Free</button>
+        </div>
+      </div>
+      <div
+        class="table-responsive shadow-sm p-3 rounded bg-white"
+        style="max-height: 300px; overflow-y: auto"
+      >
+        <table class="table table-striped mb-0 custom-table">
+          <thead class="bg-white" style="position: sticky; top: 0; z-index: 1">
+            <tr>
+              <th>Name</th>
+              <th>contact</th>
+              <th>licence</th>
+              <th>Age</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr
+              *ngFor="let employee of Employees"
+              style="cursor: pointer"
+              (click)="onEmployeeClick(employee)"
+            >
+              <td>{{ employee.employeeName }}</td>
+              <td>{{ employee.number }}</td>
+              <td>{{ employee.licence }}</td>
+              <td>{{ employee.employeAge }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
