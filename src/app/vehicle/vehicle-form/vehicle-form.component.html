@@ -68,3 +68,96 @@
     <button mat-raised-button color="primary" type="submit">Submit</button>
   </div>
 </form>
+
+<!-- Vehicle Maintenance Dashboard -->
+<!-- <div class="container mt-4">
+  <h2 class="mb-4">Vehicle Maintenance Schedule</h2>
+  <div class="row mb-3">
+    <div class="col-md-4">
+      <select class="form-select" [(ngModel)]="selectedVehicle">
+        <option value="">All Vehicles</option>
+        <option *ngFor="let v of vehicles" [value]="v.id">{{ v.name }}</option>
+      </select>
+    </div>
+    <div class="col-md-4">
+      <select class="form-select" [(ngModel)]="selectedType">
+        <option value="">All Maintenance Types</option>
+        <option value="oilChange">Oil Change</option>
+        <option value="TireChange">Tire Change</option>
+        <option value="Service">Service</option>
+      </select>
+    </div>
+  </div>
+
+  <table class="table table-bordered table-striped">
+    <thead class="table-dark">
+      <tr>
+        <th>Vehicle</th>
+        <th>Type</th>
+        <th>Service Date</th>
+        <th>Next Due Date</th>
+        <th>Cost</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of maintenanceList">
+        <td>{{ item.vehicleName }}</td>
+        <td>{{ item.maintenanceType }}</td>
+        <td>{{ item.serviceDate | date : "dd MMM yyyy" }}</td>
+        <td>{{ item.nextDueDate | date : "dd MMM yyyy" }}</td>
+        <td>{{ item.cost | currency }}</td>
+        <td>
+          <span
+            class="badge"
+            [ngClass]="{
+              'bg-success': item.daysLeft > 7,
+              'bg-warning': item.daysLeft <= 7 && item.daysLeft >= 0,
+              'bg-danger': item.daysLeft < 0
+            }"
+          >
+            {{ item.daysLeft < 0 ? "Overdue" : item.daysLeft + " days left" }}
+          </span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div> -->
+
+<!-- Dashboard Summary Cards -->
+<!-- <div class="container mt-5">
+  <div class="row g-4">
+    <div class="col-6 col-md-3">
+      <div class="card border-success shadow">
+        <div class="card-body text-center">
+          <h6>Total Maintenance</h6>
+          <h4>{{ summary.total }}</h4>
+        </div>
+      </div>
+    </div>
+    <div class="col-6 col-md-3">
+      <div class="card border-primary shadow">
+        <div class="card-body text-center">
+          <h6>This Month</h6>
+          <h4>{{ summary.month }}</h4>
+        </div>
+      </div>
+    </div>
+    <div class="col-6 col-md-3">
+      <div class="card border-warning shadow">
+        <div class="card-body text-center">
+          <h6>Upcoming Due</h6>
+          <h4>{{ summary.upcoming }}</h4>
+        </div>
+      </div>
+    </div>
+    <div class="col-6 col-md-3">
+      <div class="card border-danger shadow">
+        <div class="card-body text-center">
+          <h6>Overdue</h6>
+          <h4>{{ summary.overdue }}</h4>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->

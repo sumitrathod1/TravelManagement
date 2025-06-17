@@ -1,0 +1,51 @@
+<div mat-dialog-title>Vehicle Expense</div>
+<form>
+  <div mat-dialog-content>
+    <div class="row">
+      <div class="col-sm-6">
+        <mat-form-field appearance="outline">
+          <mat-label>Expense Date</mat-label>
+          <input
+            matInput
+            [matDatepicker]="picker"
+            formControlName="expenseDate"
+          />
+          <mat-datepicker-toggle
+            matSuffix
+            [for]="picker"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+      </div>
+      <div class="col-sm-6">
+        <mat-form-field appearance="outline">
+          <mat-label>Amount</mat-label>
+          <input
+            matInput
+            type="number"
+            placeholder="Amount"
+            min="1"
+            formControlName="amount"
+          />
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-6" appearance="outline">
+        <mat-form-field>
+          <mat-label>Category</mat-label>
+          <mat-select formControlName="vehicleType">
+            <mat-option>None</mat-option>
+            @for (ctypes of CategoryType; track ctypes) {
+            <mat-option [value]="ctypes">{{ ctypes }}</mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+  </div>
+  <div mat-dialog-actions class="action">
+    <button mat-raised-button>Cancel</button>
+    <button mat-raised-button color="primary" type="submit">Submit</button>
+  </div>
+</form>

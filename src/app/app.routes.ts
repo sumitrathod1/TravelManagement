@@ -12,6 +12,13 @@ export const routes: Routes = [
       import('./vehicle/vehicle.component').then((m) => m.VehicleComponent),
   },
   {
+    path: 'vehicle-erning',
+    loadComponent: () =>
+      import('./vehicle/vehicle-earnings/vehicle-earnings.component').then(
+        (m) => m.VehicleErningsComponent
+      ),
+  },
+  {
     path: 'booking',
     loadComponent: () =>
       import('./booking/booking.component').then((m) => m.BookingComponent),

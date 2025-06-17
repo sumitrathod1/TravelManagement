@@ -42,7 +42,7 @@
 <div class="container my-4">
   <div class="row g-4">
     <!-- Total Vehicles -->
-    <div class="col-6 col-md-3">
+    <div class="col-6 col-md-3" (click)="documentForm()">
       <div class="card border-success p-2" style="min-height: 80px">
         <div class="card-body text-center">
           <div class="mb-1">
@@ -58,7 +58,7 @@
     </div>
 
     <!-- Active Vehicles -->
-    <div class="col-6 col-md-3">
+    <div class="col-6 col-md-3" (click)="expexnseForm()">
       <div class="card border-success p-2" style="min-height: 80px">
         <div class="card-body text-center">
           <div class="mb-1">
@@ -76,7 +76,7 @@
     </div>
 
     <!-- In Maintenance -->
-    <div class="col-6 col-md-3">
+    <div class="col-6 col-md-3" (click)="maintenanceForm()">
       <div class="card border-warning p-2" style="min-height: 80px">
         <div class="card-body text-center">
           <div class="mb-1">

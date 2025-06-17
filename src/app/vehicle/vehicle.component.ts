@@ -1,6 +1,10 @@
 import { Component } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { CommonModule } from '@angular/common';
+import { MatDialog } from '@angular/material/dialog';
+import { DocumentFormComponent } from './document-form/document-form.component';
+import { ExpenseFormComponent } from './expense-form/expense-form.component';
+import { MaintenanceFormComponent } from './maintenance-form/maintenance-form.component';
 
 @Component({
   selector: 'app-vehicle-form',
@@ -10,6 +14,7 @@ import { CommonModule } from '@angular/common';
   styleUrl: './vehicle.component.css',
 })
 export class VehicleComponent {
+  constructor(private _dilog: MatDialog) {}
   vehicleTypes = [
     {
       Name: 'Maruti',
@@ -54,4 +59,15 @@ export class VehicleComponent {
       Next_Emi: '2023-06-15',
     },
   ];
+
+  documentForm() {
+    this._dilog.open(DocumentFormComponent);
+  }
+
+  expexnseForm() {
+    this._dilog.open(ExpenseFormComponent);
+  }
+  maintenanceForm() {
+    this._dilog.open(MaintenanceFormComponent);
+  }
 }

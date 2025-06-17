@@ -17,12 +17,9 @@ import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
-import { merge } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
-import { Dialog } from '@angular/cdk/dialog';
 
 @Component({
-  selector: 'app-vehicle-form',
+  selector: 'app-document-form',
   standalone: true,
   imports: [
     NgxMaterialTimepickerModule,
@@ -37,40 +34,7 @@ import { Dialog } from '@angular/cdk/dialog';
     MatButtonModule,
     MatGridListModule,
   ],
-  templateUrl: './vehicle-form.component.html',
-  styleUrl: './vehicle-form.component.css',
+  templateUrl: './document-form.component.html',
+  styleUrl: './document-form.component.css',
 })
-export class VehicleFormComponent {
-  vehicleForm!: FormGroup;
-
-  vehicleTypes: string[] = [
-    'HatchBack',
-    'Sedan',
-    'Suv',
-    'TT17Seater',
-    'TT20Seater',
-    'Bus30Seater',
-    'Bus40Seater',
-    'Bus60Seater',
-    'Notspecified',
-  ];
-
-  constructor(private _fb: FormBuilder, private _dilog: Dialog) {
-    this.vehicleForm = _fb.group({
-      vehiclename: '',
-      vehicleNumber: '',
-      vehicleType: '',
-      seatingCapacity: '',
-      registrationDate: '',
-    });
-  }
-
-  onVehicleFormSubmit() {
-    if (this.vehicleForm.valid) {
-      console.log(this.vehicleForm.value);
-    }
-  }
-  clossVehicle() {
-    this._dilog.closeAll();
-  }
-}
+export class DocumentFormComponent {}
