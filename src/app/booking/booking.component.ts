@@ -18,6 +18,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
 import { BookingListComponent } from './booking-list/booking-list.component';
+import { CalendarComponent } from '../calendar/calendar.component';
 
 @Component({
   selector: 'app-booking',
@@ -35,6 +36,7 @@ import { BookingListComponent } from './booking-list/booking-list.component';
     MatButtonModule,
     MatGridListModule,
     BookingListComponent,
+    CalendarComponent,
   ],
   templateUrl: './booking.component.html',
   styleUrl: './booking.component.css',
