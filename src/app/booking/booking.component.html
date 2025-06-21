@@ -1,49 +1,59 @@
 <div class="container mt-4">
   <div class="row g-3">
     <div class="col-6 col-md-3">
-      <div class="card text-center shadow-sm border-primary">
+      <a
+        class="card text-center shadow-sm border-primary text-decoration-none"
+        routerLink="/booking-table"
+        style="cursor: pointer"
+      >
         <div class="card-body">
-          <i class="bi bi-receipt fs-2 text-primary"></i>
+          <i class="bi bi-car-front fs-2 text-primary"></i>
           <h6 class="mt-2">Total Bookings</h6>
           <h5 class="fw-bold">totalBookings</h5>
         </div>
-      </div>
+      </a>
     </div>
 
     <div class="col-6 col-md-3">
-      <div class="card text-center shadow-sm border-success">
+      <a
+        style="cursor: pointer"
+        class="card text-center shadow-sm border-success"
+        routerLink="/booking-list"
+      >
         <div class="card-body">
-          <i class="bi bi-car-front fs-2 text-success"></i>
-          <h6 class="mt-2">Assigned Bookings</h6>
+          <i class="bi bi-receipt fs-2 text-success"></i>
+          <h6 class="mt-2">Customer Details</h6>
           <h5 class="fw-bold">stats.assigned</h5>
         </div>
-      </div>
+      </a>
     </div>
 
     <div class="col-6 col-md-3">
-      <div class="card text-center shadow-sm border-warning">
+      <a
+        style="cursor: pointer"
+        class="card text-center shadow-sm border-warning"
+      >
         <div class="card-body">
           <i class="bi bi-hourglass-split fs-2 text-warning"></i>
           <h6 class="mt-2">Pending Bookings</h6>
           <h5 class="fw-bold">stats.pending</h5>
         </div>
-      </div>
+      </a>
     </div>
 
     <div class="col-6 col-md-3">
-      <div class="card text-center shadow-sm border-danger">
+      <a
+        style="cursor: pointer"
+        class="card text-center shadow-sm border-danger"
+      >
         <div class="card-body">
           <i class="bi bi-currency-rupee fs-2 text-danger"></i>
           <h6 class="mt-2">Total Revenue</h6>
           <h5 class="fw-bold">₹ stats.revenue</h5>
         </div>
-      </div>
+      </a>
     </div>
   </div>
-</div>
-
-<div>
-  <app-booking-list></app-booking-list>
 </div>
 
 <div class="container my-4">

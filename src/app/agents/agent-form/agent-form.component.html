@@ -1,0 +1,52 @@
+<div mat-dialog-title>Add Vehicle</div>
+<form [formGroup]="agentForm" (ngSubmit)="onAgentFormSubmit()">
+  <div mat-dialog-content>
+    <div class="row">
+      <div class="col-sm-6">
+        <mat-form-field appearance="outline">
+          <mat-label>Agent Name</mat-label>
+          <input
+            matInput
+            type="text"
+            placeholder="Name"
+            formControlName="agentName"
+          />
+        </mat-form-field>
+      </div>
+      <div class="col-sm-6">
+        <mat-form-field class="col-ms-6" appearance="outline">
+          <mat-label>Contact Number</mat-label>
+          <input matInput type="text" formControlName="contactNumber" />
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-6" appearance="outline">
+        <mat-form-field>
+          <mat-label>Agent Type</mat-label>
+          <mat-select formControlName="agentType">
+            <mat-option>None</mat-option>
+            @for (atypes of agentTypes; track atypes) {
+            <mat-option [value]="atypes">{{ atypes }}</mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="col-sm-6">
+        <mat-form-field appearance="outline">
+          <mat-label>Email</mat-label>
+          <input
+            matInput
+            type="email"
+            placeholder="abc@gmail.com"
+            formControlName="email"
+          />
+        </mat-form-field>
+      </div>
+    </div>
+  </div>
+  <div mat-dialog-actions class="action">
+    <button mat-raised-button (click)="clossAgent()">Cancel</button>
+    <button mat-raised-button color="primary" type="submit">Submit</button>
+  </div>
+</form>

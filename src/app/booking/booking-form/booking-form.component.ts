@@ -43,6 +43,7 @@ import { VehicleService } from '../../services/vehicle.service';
   styleUrl: './booking-form.component.css',
 })
 export class BookingFormComponent {
+  agentTypes = ['AB', 'olen', 'kiran'];
   BookingType = [
     'AirportPickup',
     'AirportDrop',
@@ -81,6 +82,9 @@ export class BookingFormComponent {
       amount: '',
       bookingType: '',
       payment: '',
+      ownerPay: '',
+      customerPay: '',
+      agent: '',
     });
 
     if (data) {

@@ -1,9 +1,8 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { Component } from '@angular/core';
 import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { RouterModule } from '@angular/router';
-
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import {
   FormBuilder,
   FormControl,
@@ -18,16 +17,16 @@ import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
-import { BookingListComponent } from './booking-list/booking-list.component';
-import { CalendarComponent } from '../calendar/calendar.component';
+import { merge } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { Dialog } from '@angular/cdk/dialog';
 
 @Component({
-  selector: 'app-booking',
+  selector: 'app-agent-form',
   standalone: true,
   imports: [
     NgxMaterialTimepickerModule,
     FormsModule,
-    RouterModule,
     MatNativeDateModule,
     MatFormFieldModule,
     MatDatepickerModule,
@@ -37,11 +36,14 @@ import { CalendarComponent } from '../calendar/calendar.component';
     ReactiveFormsModule,
     MatButtonModule,
     MatGridListModule,
-    BookingListComponent,
-    CalendarComponent,
   ],
-  templateUrl: './booking.component.html',
-  styleUrl: './booking.component.css',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  templateUrl: './agent-form.component.html',
+  styleUrl: './agent-form.component.css',
 })
-export class BookingComponent {}
+export class AgentFormComponent {
+  agentForm!: FormGroup;
+  agentTypes: string[] = ['Agent', 'TravelOwner'];
+
+  onAgentFormSubmit() {}
+  clossAgent() {}
+}

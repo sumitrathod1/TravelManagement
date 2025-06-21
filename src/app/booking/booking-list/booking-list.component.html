@@ -4,9 +4,7 @@
   *ngFor="let booking of allBookngs"
 >
   <div class="d-flex flex-wrap justify-content-between align-items-start gap-3">
-    <!-- Left: Customer Info -->
     <div class="d-flex gap-3 align-items-start">
-      <!-- Text -->
       <div>
         <div class="fw-bold fs-6">{{ booking.customer.customerName }}</div>
         <div class="text-muted small">
@@ -24,7 +22,6 @@
       </div>
     </div>
 
-    <!-- Right: Booking Info -->
     <div class="text-end flex-grow-1" style="max-width: 220px">
       <div class="text-muted small">Booking ID: {{ booking.bookingId }}</div>
       <div class="fw-bold">{{ booking.travelDate }}</div>
@@ -38,5 +35,3 @@
     </div>
   </div>
 </div>
-
-<!-- Duplicate the above block for more bookings, or use *ngFor for dynamic data -->

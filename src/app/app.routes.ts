@@ -31,6 +31,13 @@ export const routes: Routes = [
       ),
   },
   {
+    path: 'booking-table',
+    loadComponent: () =>
+      import('./booking/booking-table/booking-table.component').then(
+        (m) => m.BookingTableComponent
+      ),
+  },
+  {
     path: 'employee',
     loadComponent: () =>
       import('./employee/employee.component').then((m) => m.EmployeeComponent),
