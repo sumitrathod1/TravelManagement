@@ -1,0 +1,144 @@
+<button (click)="onAgentClick()">Add</button>
+<div class="container py-4 px-3">
+  <!-- Metrics -->
+  <div class="row g-3 mb-4">
+    <div class="col-6 col-md-3">
+      <div class="card text-center h-100">
+        <div class="card-body">
+          <p class="fw-medium">Bookings</p>
+          <h4 class="fw-bold">1,234</h4>
+          <p class="text-success m-0">+10%</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-6 col-md-3">
+      <div class="card text-center h-100">
+        <div class="card-body">
+          <p class="fw-medium">Total Revenue</p>
+          <h4 class="fw-bold">$500,000</h4>
+          <p class="text-success m-0">+15%</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-6 col-md-3">
+      <div class="card text-center h-100">
+        <div class="card-body">
+          <p class="fw-medium">Avg. Booking Value</p>
+          <h4 class="fw-bold">$405</h4>
+          <p class="text-danger m-0">-5%</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-6 col-md-3">
+      <div class="card text-center h-100">
+        <div class="card-body">
+          <p class="fw-medium">Commission Earned</p>
+          <h4 class="fw-bold">$25,000</h4>
+          <p class="text-success m-0">+8%</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Top Agents -->
+  <h5 class="fw-bold mb-3">Top Performing Agents</h5>
+  <ul class="list-unstyled">
+    <li class="d-flex align-items-center mb-3">
+      <img
+        src="https://via.placeholder.com/48"
+        class="rounded-circle me-3"
+        alt="Agent"
+        width="48"
+        height="48"
+      />
+      <div>
+        <p class="mb-0 fw-medium">Ethan Harper</p>
+        <small class="text-muted">1,234 Bookings</small>
+      </div>
+    </li>
+    <li class="d-flex align-items-center mb-3">
+      <img
+        src="https://via.placeholder.com/48"
+        class="rounded-circle me-3"
+        alt="Agent"
+        width="48"
+        height="48"
+      />
+      <div>
+        <p class="mb-0 fw-medium">Olivia Bennett</p>
+        <small class="text-muted">1,100 Bookings</small>
+      </div>
+    </li>
+    <li class="d-flex align-items-center mb-3">
+      <img
+        src="https://via.placeholder.com/48"
+        class="rounded-circle me-3"
+        alt="Agent"
+        width="48"
+        height="48"
+      />
+      <div>
+        <p class="mb-0 fw-medium">Noah Carter</p>
+        <small class="text-muted">1,050 Bookings</small>
+      </div>
+    </li>
+  </ul>
+
+  <!-- Recent Activity -->
+  <h5 class="fw-bold mb-3">Recent Activity</h5>
+  <ul class="list-unstyled">
+    <li class="d-flex align-items-start mb-3">
+      <i class="bi bi-check-circle me-3 text-primary"></i>
+      <div>
+        <p class="mb-0">Agent Olivia Bennett completed a booking for $500</p>
+        <small class="text-muted">10:30 AM</small>
+      </div>
+    </li>
+    <li class="d-flex align-items-start mb-3">
+      <i class="bi bi-person me-3 text-primary"></i>
+      <div>
+        <p class="mb-0">Agent Ethan Harper assigned to a new booking</p>
+        <small class="text-muted">9:45 AM</small>
+      </div>
+    </li>
+    <li class="d-flex align-items-start mb-3">
+      <i class="bi bi-plus-circle me-3 text-primary"></i>
+      <div>
+        <p class="mb-0">New agent Noah Carter joined the team</p>
+        <small class="text-muted">8:15 AM</small>
+      </div>
+    </li>
+  </ul>
+
+  <!-- Agent Distribution -->
+  <h5 class="fw-bold mb-3">Agent Distribution by Type</h5>
+  <div class="mb-4">
+    <p class="mb-1 fw-medium">Agent Types</p>
+    <h4 class="fw-bold">3</h4>
+    <p class="text-success">Total +10%</p>
+    <div class="mb-2">
+      <small>Individual</small>
+      <div class="progress">
+        <div class="progress-bar bg-info" style="width: 50%"></div>
+      </div>
+    </div>
+    <div class="mb-2">
+      <small>Team</small>
+      <div class="progress">
+        <div class="progress-bar bg-secondary" style="width: 20%"></div>
+      </div>
+    </div>
+    <div class="mb-2">
+      <small>Corporate</small>
+      <div class="progress">
+        <div class="progress-bar bg-success" style="width: 60%"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Buttons -->
+  <div class="d-flex justify-content-between">
+    <button class="btn btn-primary">Add Agent</button>
+    <button class="btn btn-outline-secondary">View All Agents</button>
+  </div>
+</div>

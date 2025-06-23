@@ -6,6 +6,7 @@ import { Injectable } from '@angular/core';
 })
 export class VehicleService {
   baseUrl: string = 'https://localhost:7183/api/Vehicle/';
+  //baseUrl: string = 'http://192.168.133.17:5006/api/Vehicle/';
 
   constructor(private _http: HttpClient) {}
 

@@ -8,6 +8,8 @@ import { BehaviorSubject, Observable, Subject, tap } from 'rxjs';
 export class BookingService {
   private baseUrl: string = 'https://localhost:7183/api/Booking/';
 
+  //private baseUrl: string = 'http://192.168.133.17:5006/api/Booking/';
+
   private bookingCountSubject = new BehaviorSubject<number>(0);
   bookingCount$ = this.bookingCountSubject.asObservable();
 

@@ -7,6 +7,7 @@ import { BehaviorSubject, Observable, Subject, tap } from 'rxjs';
 })
 export class EmployeeService {
   private baseUrl: string = 'https://localhost:7183/api/User/';
+  //private baseUrl: string = 'http://192.168.133.17:5006/api/User/';
 
   private employeeCountSubject = new BehaviorSubject<number>(0);
   employeCount$ = this.employeeCountSubject.asObservable();

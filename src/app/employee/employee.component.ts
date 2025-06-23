@@ -1,74 +1,42 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+import { AddemployeeFormComponent } from './addemployee-form/addemployee-form.component';
 
 @Component({
   selector: 'app-employee',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterModule],
   templateUrl: './employee.component.html',
   styleUrl: './employee.component.css',
 })
 export class EmployeeComponent {
-  employees = [
+  constructor(private _dialog: MatDialog) {}
+  activeDrivers = [
     {
-      Name: 'John Doe',
-      img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSCqjgw1zkAbN4v2qumZJ8R9aIBn1XZQ0enOQ&s',
-      Position: 'Software Engineer',
-      age: 30,
-      contact: '123-456-7890',
-      address: '123 Main St, City, Country',
-      salary: 60000,
-      licence: 'MVC',
+      name: 'Lucas Bennett',
+      location: '34.0522° N, 118.2437° W',
+      image: 'https://i.pravatar.cc/100?img=1',
     },
     {
-      Name: 'John Doe',
-      img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSCqjgw1zkAbN4v2qumZJ8R9aIBn1XZQ0enOQ&s',
-      Position: 'Software Engineer',
-      age: 30,
-      contact: '123-456-7890',
-      address: '123 Main St, City, Country',
-      salary: 60000,
-      licence: 'MVC',
+      name: 'Owen Carter',
+      location: '34.0522° N, 118.2437° W',
+      image: 'https://i.pravatar.cc/100?img=2',
     },
     {
-      Name: 'John Doe',
-      img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSCqjgw1zkAbN4v2qumZJ8R9aIBn1XZQ0enOQ&s',
-      Position: 'Software Engineer',
-      age: 30,
-      contact: '123-456-7890',
-      address: '123 Main St, City, Country',
-      salary: 60000,
-      licence: 'MVC',
+      name: 'Elijah Hayes',
+      location: '34.0522° N, 118.2437° W',
+      image: 'https://i.pravatar.cc/100?img=3',
     },
     {
-      Name: 'John Doe',
-      img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSCqjgw1zkAbN4v2qumZJ8R9aIBn1XZQ0enOQ&s',
-      Position: 'Software Engineer',
-      age: 30,
-      contact: '123-456-7890',
-      address: '123 Main St, City, Country',
-      salary: 60000,
-      licence: 'MVC',
-    },
-    {
-      Name: 'John Doe',
-      img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSCqjgw1zkAbN4v2qumZJ8R9aIBn1XZQ0enOQ&s',
-      Position: 'Software Engineer',
-      age: 30,
-      contact: '123-456-7890',
-      address: '123 Main St, City, Country',
-      salary: 60000,
-      licence: 'MVC',
-    },
-    {
-      Name: 'John Doe',
-      img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSCqjgw1zkAbN4v2qumZJ8R9aIBn1XZQ0enOQ&s',
-      Position: 'Software Engineer',
-      age: 30,
-      contact: '123-456-7890',
-      address: '123 Main St, City, Country',
-      salary: 60000,
-      licence: 'MVC',
+      name: 'Oliver Foster',
+      location: '34.0522° N, 118.2437° W',
+      image: 'https://i.pravatar.cc/100?img=4',
     },
   ];
+
+  addDriver() {
+    this._dialog.open(AddemployeeFormComponent);
+  }
 }

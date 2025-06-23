@@ -42,4 +42,21 @@ export const routes: Routes = [
     loadComponent: () =>
       import('./employee/employee.component').then((m) => m.EmployeeComponent),
   },
+  {
+    path: 'employee-list',
+    loadComponent: () =>
+      import('./employee/employee-list/employee-list.component').then(
+        (m) => m.EmployeeListComponent
+      ),
+  },
+  {
+    path: 'agent',
+    loadComponent: () =>
+      import('./agents/agents.component').then((m) => m.AgentsComponent),
+  },
+  {
+    path: 'calendar',
+    loadComponent: () =>
+      import('./calendar/calendar.component').then((m) => m.CalendarComponent),
+  },
 ];

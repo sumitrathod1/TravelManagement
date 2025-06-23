@@ -52,10 +52,23 @@
 
   <div class="row g-4">
     <div class="col-12 col-md-6 col-md-4 mb-4">
-      <app-booking-table></app-booking-table>
+      <h2 class="text-center mt-3">Bookings</h2>
     </div>
     <div class="col-12 col-md-6 col-md-4 mb-4">
-      <app-employee-table></app-employee-table>
+      <h3 class="section-title">Reccent Activity</h3>
+      <div class="driver-list">
+        <div class="driver-card" *ngFor="let driver of activeDrivers">
+          <img
+            [src]="driver.image"
+            alt="{{ driver.name }}"
+            class="driver-image"
+          />
+          <div>
+            <p class="driver-name">{{ driver.name }}</p>
+            <p class="driver-location">Location: {{ driver.location }}</p>
+          </div>
+        </div>
+      </div>
     </div>
     <div class="col-12 col-md-6 col-md-4 mb-4">
       <app-employee-table></app-employee-table>

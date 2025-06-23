@@ -29,6 +29,29 @@ export class HomeComponent {
   totalEmployees: number = 0;
   totalVehicles: number = 0;
 
+  activeDrivers = [
+    {
+      name: 'Lucas Bennett',
+      location: '34.0522° N, 118.2437° W',
+      image: 'https://i.pravatar.cc/100?img=1',
+    },
+    {
+      name: 'Owen Carter',
+      location: '34.0522° N, 118.2437° W',
+      image: 'https://i.pravatar.cc/100?img=2',
+    },
+    {
+      name: 'Elijah Hayes',
+      location: '34.0522° N, 118.2437° W',
+      image: 'https://i.pravatar.cc/100?img=3',
+    },
+    {
+      name: 'Oliver Foster',
+      location: '34.0522° N, 118.2437° W',
+      image: 'https://i.pravatar.cc/100?img=4',
+    },
+  ];
+
   constructor(
     private _bookingservice: BookingService,
     private _employeServices: EmployeeService

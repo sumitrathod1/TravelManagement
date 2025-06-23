@@ -1,43 +1,33 @@
-<div class="container">
-  <div class="row">
-    <div class="col-md-4 mb-4" *ngFor="let employee of employees">
-      <div class="card w-100%">
-        <img
-          class="card-img-top"
-          src="{{ employee.img }}"
-          alt="{{ employee.Name }}"
-          style="width: 100%; height: 200px; object-fit: cover"
-        />
-        <div class="card-body">
-          <div class="row mb-2">
-            <div class="col-6 text-start fw-bold">Name</div>
-            <div class="col-6 text-end">{{ employee.Name }}</div>
-          </div>
-          <div class="row mb-2">
-            <div class="col-6 text-start fw-bold">Age</div>
-            <div class="col-6 text-end">{{ employee.age }}</div>
-          </div>
-          <div class="row mb-2">
-            <div class="col-6 text-start fw-bold">Address</div>
-            <div class="col-6 text-end">{{ employee.address }}</div>
-          </div>
-          <div class="row mb-2">
-            <div class="col-6 text-start fw-bold">Licence</div>
-            <div class="col-6 text-end">{{ employee.licence }}</div>
-          </div>
-          <div class="row mb-2">
-            <div class="col-6 text-start fw-bold">Ph.No</div>
-            <div class="col-6 text-end">{{ employee.contact }}</div>
-          </div>
-          <div class="row mt-3">
-            <div class="col-6">
-              <button class="btn btn-success w-100">View Doc.</button>
-            </div>
-            <div class="col-6">
-              <button class="btn btn-primary w-100">Edit</button>
-            </div>
-          </div>
-        </div>
+<div class="dashboard-container">
+  <div class="stats-grid">
+    <div class="stat-card" routerLink="/employee-list">
+      <p class="stat-label">Active Drivers</p>
+      <p class="stat-value">125</p>
+    </div>
+
+    <div class="stat-card">
+      <p class="stat-label">Avg. Rating</p>
+      <p class="stat-value">4.8</p>
+    </div>
+
+    <div class="stat-card">
+      <p class="stat-label">Total Trips</p>
+      <p class="stat-value">5,2</p>
+    </div>
+
+    <div class="stat-card" (click)="addDriver()">
+      <p class="stat-label">Add driver</p>
+      <a class="stat-value"><i class="bi bi-person-plus-fill"></i></a>
+    </div>
+  </div>
+
+  <h3 class="section-title">Active Drivers</h3>
+  <div class="driver-list">
+    <div class="driver-card" *ngFor="let driver of activeDrivers">
+      <img [src]="driver.image" alt="{{ driver.name }}" class="driver-image" />
+      <div>
+        <p class="driver-name">{{ driver.name }}</p>
+        <p class="driver-location">Location: {{ driver.location }}</p>
       </div>
     </div>
   </div>

@@ -3,7 +3,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { RouterModule } from '@angular/router';
-
+import { CommonModule } from '@angular/common';
 import {
   FormBuilder,
   FormControl,
@@ -20,7 +20,6 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
 import { BookingListComponent } from './booking-list/booking-list.component';
 import { CalendarComponent } from '../calendar/calendar.component';
-
 @Component({
   selector: 'app-booking',
   standalone: true,
@@ -39,6 +38,7 @@ import { CalendarComponent } from '../calendar/calendar.component';
     MatGridListModule,
     BookingListComponent,
     CalendarComponent,
+    CommonModule,
   ],
   templateUrl: './booking.component.html',
   styleUrl: './booking.component.css',

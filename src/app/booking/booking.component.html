@@ -21,7 +21,7 @@
         routerLink="/booking-list"
       >
         <div class="card-body">
-          <i class="bi bi-receipt fs-2 text-success"></i>
+          <i class="bi bi-person-vcard-fill fs-2 text-success"></i>
           <h6 class="mt-2">Customer Details</h6>
           <h5 class="fw-bold">stats.assigned</h5>
         </div>
@@ -32,11 +32,12 @@
       <a
         style="cursor: pointer"
         class="card text-center shadow-sm border-warning"
+        routerLink="/calendar"
       >
         <div class="card-body">
-          <i class="bi bi-hourglass-split fs-2 text-warning"></i>
-          <h6 class="mt-2">Pending Bookings</h6>
-          <h5 class="fw-bold">stats.pending</h5>
+          <i class="bi bi-calendar-heart fs-2 text-warning"></i>
+          <h6 class="mt-2">Booking Calendar</h6>
+          <h5 class="fw-bold">5</h5>
         </div>
       </a>
     </div>
@@ -54,8 +55,4 @@
       </a>
     </div>
   </div>
-</div>
-
-<div class="container my-4">
-  <app-calendar></app-calendar>
 </div>

@@ -13,7 +13,11 @@ import {
 } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatGridListModule } from '@angular/material/grid-list';
-import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
+import {
+  MatDialog,
+  MatDialogModule,
+  MatDialogRef,
+} from '@angular/material/dialog';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
@@ -39,4 +43,10 @@ import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
 })
 export class MaintenanceFormComponent {
   maintenanceType: string[] = [];
+
+  constructor(private _dialog: MatDialog) {}
+
+  onCloseMaintenance() {
+    this._dialog.closeAll();
+  }
 }
