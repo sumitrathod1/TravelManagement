@@ -1,5 +1,5 @@
 <div mat-dialog-title>Vehicle Maintenance</div>
-<form>
+<form [formGroup]="maintenanceForm" (ngSubmit)="onMaintenanceFormSubmit()">
   <div mat-dialog-content>
     <div class="row">
       <div class="col-sm-6">
@@ -7,24 +7,25 @@
           <mat-label>Service Date</mat-label>
           <input
             matInput
-            [matDatepicker]="picker"
+            [matDatepicker]="picker1"
             formControlName="serviceDate"
           />
           <mat-datepicker-toggle
             matSuffix
-            [for]="picker"
+            [for]="picker1"
           ></mat-datepicker-toggle>
-          <mat-datepicker #picker></mat-datepicker>
+          <mat-datepicker #picker1></mat-datepicker>
         </mat-form-field>
       </div>
       <div class="col-sm-6">
         <mat-form-field class="col-ms-6" appearance="outline">
           <mat-label>Next Due Date</mat-label>
-          <input matInput [matDatepicker]="picker" formControlName="dueDate" />
+          <input matInput [matDatepicker]="picker2" formControlName="dueDate" />
           <mat-datepicker-toggle
             matSuffix
-            [for]="picker"
+            [for]="picker2"
           ></mat-datepicker-toggle>
+          <mat-datepicker #picker2></mat-datepicker>
         </mat-form-field>
       </div>
     </div>
@@ -32,7 +33,7 @@
       <div class="col-sm-6">
         <mat-form-field appearance="outline">
           <mat-label>Description</mat-label>
-          <textarea matInput></textarea>
+          <textarea matInput formControlName="description"></textarea>
         </mat-form-field>
       </div>
       <div class="col-sm-6">
@@ -53,7 +54,7 @@
       <div class="col-sm-6" appearance="outline">
         <mat-form-field>
           <mat-label>Maintenance Type</mat-label>
-          <mat-select formControlName="vehicleType">
+          <mat-select formControlName="maintenanceType">
             <mat-option>None</mat-option>
             @for (mtypes of maintenanceType; track mtypes) {
             <mat-option [value]="mtypes">{{ mtypes }}</mat-option>

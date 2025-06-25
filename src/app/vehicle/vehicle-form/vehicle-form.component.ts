@@ -17,8 +17,6 @@ import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
-import { merge } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
 import { Dialog } from '@angular/cdk/dialog';
 
 @Component({

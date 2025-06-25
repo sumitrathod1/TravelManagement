@@ -1,5 +1,5 @@
 <div mat-dialog-title>Vehicle Expense</div>
-<form>
+<form [formGroup]="expenseForm" (ngSubmit)="onExpenseFormSubmit()">
   <div mat-dialog-content>
     <div class="row">
       <div class="col-sm-6">
@@ -34,7 +34,7 @@
       <div class="col-sm-6" appearance="outline">
         <mat-form-field>
           <mat-label>Category</mat-label>
-          <mat-select formControlName="vehicleType">
+          <mat-select formControlName="categoryType">
             <mat-option>None</mat-option>
             @for (ctypes of CategoryType; track ctypes) {
             <mat-option [value]="ctypes">{{ ctypes }}</mat-option>

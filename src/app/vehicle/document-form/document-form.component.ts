@@ -42,7 +42,22 @@ import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
   styleUrl: './document-form.component.css',
 })
 export class DocumentFormComponent {
-  constructor(private _dialog: MatDialog) {}
+  documentForm!: FormGroup;
+  constructor(private _fb: FormBuilder, private _dialog: MatDialog) {
+    this.documentForm = _fb.group({
+      title: '',
+      documentType: '',
+      expiryDate: '',
+      description: '',
+    });
+
+    this.documentForm.valueChanges
+      .pipe(takeUntilDestroyed())
+      .subscribe((value) => {
+        console.log('Document form value changed:', value);
+      });
+  }
+  onDocumentFormSubmit() {}
 
   onCloseDocument() {
     this._dialog.closeAll();

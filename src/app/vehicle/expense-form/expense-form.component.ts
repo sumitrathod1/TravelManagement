@@ -21,9 +21,6 @@ import {
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
-import { merge } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
-import { Dialog } from '@angular/cdk/dialog';
 
 @Component({
   selector: 'app-expense-form',
@@ -45,9 +42,18 @@ import { Dialog } from '@angular/cdk/dialog';
   styleUrl: './expense-form.component.css',
 })
 export class ExpenseFormComponent {
+  expenseForm!: FormGroup;
   CategoryType: string[] = ['sss', 'sss', 'sss', 'sss', 'sss'];
 
-  constructor(private _dialog: MatDialog) {}
+  constructor(private _fb: FormBuilder, private _dialog: MatDialog) {
+    this.expenseForm = _fb.group({
+      categoryType: '',
+      amount: '',
+      expenseDate: '',
+    });
+  }
+
+  onExpenseFormSubmit() {}
 
   onCloseExpense() {
     this._dialog.closeAll();
