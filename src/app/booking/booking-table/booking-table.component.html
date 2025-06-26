@@ -1,4 +1,4 @@
-<div class="container py-3">
+<!-- <div class="container py-3">
   <div class="row">
     <div class="col-12 col-md-8 mx-auto">
       <h2 class="text-center mb-3">Bookings</h2>
@@ -39,6 +39,100 @@
           </tbody>
         </table>
       </div>
+    </div>
+  </div>
+</div> -->
+
+<div class="container py-3">
+  <!-- Search and Filters -->
+  <div class="mb-3">
+    <input
+      type="text"
+      class="form-control mb-2"
+      placeholder="Search bookings..."
+    />
+    <div class="btn-group w-100" role="group">
+      <button class="btn btn-outline-secondary">All</button>
+      <button class="btn btn-outline-success">Confirmed</button>
+      <button class="btn btn-outline-warning">Pending</button>
+      <button class="btn btn-outline-danger">Cancelled</button>
+    </div>
+  </div>
+
+  <!-- Summary -->
+  <div class="d-flex justify-content-between mb-3">
+    <div class="summary-card bg-primary text-white text-center">
+      <div class="fw-bold">12</div>
+      <small>Total</small>
+    </div>
+    <div class="summary-card bg-success text-white text-center">
+      <div class="fw-bold">8</div>
+      <small>Confirmed</small>
+    </div>
+    <div class="summary-card bg-warning text-dark text-center">
+      <div class="fw-bold">4</div>
+      <small>Pending</small>
+    </div>
+  </div>
+
+  <!-- <div class="booking-card" *ngFor="let booking of bookings">
+    <div class="d-flex">
+      <div class="icon-box me-2" [ngStyle]="{ backgroundColor: booking.color }">
+        <i class="bi bi-{{ booking.icon }} text-white"></i>
+      </div>
+      <div class="flex-grow-1">
+        <div class="d-flex justify-content-between">
+          <div>
+            <div class="fw-semibold">{{ booking.title }}</div>
+            <small class="text-muted">{{ booking.subTitle }}</small>
+          </div>
+          <span class="badge" [ngClass]="booking.statusClass">{{
+            booking.status
+          }}</span>
+        </div>
+
+        <div class="mt-2 small">
+          <div *ngFor="let detail of booking.details">{{ detail }}</div>
+        </div>
+      </div>
+    </div>
+    <div class="text-end fw-semibold mt-2">₹{{ booking.amount }}</div>
+  </div>
+</div> -->
+
+  <div *ngFor="let booking of bookingsss" class="booking-card">
+    <div class="booking-left">
+      <div class="icon-box">
+        <span class="material-icons">{{ booking.icon }}</span>
+      </div>
+    </div>
+
+    <div class="booking-middle">
+      <div class="title">{{ booking.title }}</div>
+      <div class="location">{{ booking.location }}</div>
+
+      <div class="dates">
+        <div class="date-section">
+          <small>Pick-up</small>
+          <div>{{ booking.pickupDate }}</div>
+        </div>
+        <div class="date-section">
+          <small>Drop-off</small>
+          <div>{{ booking.dropoffDate }}</div>
+        </div>
+      </div>
+
+      <div class="duration">
+        <span class="material-icons">calendar_today</span>
+        {{ booking.duration }}
+      </div>
+    </div>
+
+    <div class="booking-right">
+      <span class="status" [ngClass]="booking.status.toLowerCase()">{{
+        booking.status
+      }}</span>
+      <div class="price">{{ booking.price }}</div>
     </div>
   </div>
 </div>

@@ -45,4 +45,47 @@ export class BookingTableComponent {
       data: booking,
     });
   }
+
+  bookingsss = [
+    {
+      icon: 'directions_car',
+      title: 'Rental Car',
+      location: 'BMW X3 - Premium',
+      pickupDate: 'Dec 21, 2024',
+      dropoffDate: 'Dec 25, 2024',
+      duration: '4 Days',
+      status: 'Confirmed',
+      price: '$320',
+    },
+    {
+      icon: 'directions_car',
+      title: 'Rental Car',
+      location: 'BMW X3 - Premium',
+      pickupDate: 'Dec 21, 2024',
+      dropoffDate: 'Dec 25, 2024',
+      duration: '4 Days',
+      status: 'Confirmed',
+      price: '$320',
+    },
+    {
+      icon: 'directions_car',
+      title: 'Rental Car',
+      location: 'BMW X3 - Premium',
+      pickupDate: 'Dec 21, 2024',
+      dropoffDate: 'Dec 25, 2024',
+      duration: '4 Days',
+      status: 'Confirmed',
+      price: '$320',
+    },
+    {
+      icon: 'directions_car',
+      title: 'Rental Car',
+      location: 'BMW X3 - Premium',
+      pickupDate: 'Dec 21, 2024',
+      dropoffDate: 'Dec 25, 2024',
+      duration: '4 Days',
+      status: 'Confirmed',
+      price: '$320',
+    },
+  ];
 }
