@@ -1,4 +1,26 @@
 .example-spacer {
-    flex: 1 1 auto;
-  }
-  
+  flex: 1 1 auto;
+}
+/* app.component.css or styles.css */
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.content {
+  flex: 1;
+}
+
+app-footer {
+  background-color: #f9fafb;
+  padding: 1rem;
+  text-align: center;
+}

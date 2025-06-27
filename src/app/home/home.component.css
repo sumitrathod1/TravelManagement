@@ -26,7 +26,7 @@
   flex-direction: column;
   justify-content: space-between;
 
-  height: 100%; /* Stretch to fill parent height */
+  height: 100%;
   padding: 1rem;
   border-radius: 8px;
 
@@ -60,7 +60,6 @@
 
 .dashboard-label {
   font-size: 1rem;
-  color: #888;
   margin-bottom: 4px;
 }
 
@@ -145,4 +144,48 @@
   color: #4c759a;
   font-size: 14px;
   margin: 2px 0 0 0;
+}
+
+/*--------------------------*/
+
+.chart-card {
+  background: #ffffff;
+  border-radius: 12px;
+  transition: transform 0.3s ease, box-shadow 0.5s ease;
+  cursor: pointer;
+}
+
+.chart-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(99, 102, 241, 0.2);
+}
+
+.shadow-effect {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+canvas {
+  max-height: 300px;
+}
+
+.booking-card {
+  border-radius: 10px;
+  padding: 10px;
+  margin-bottom: 12px;
+  background-color: #f9f9f9;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.05);
+}
+
+.profile-img {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 10px;
+}
+
+.status-bar {
+  width: 4px;
+  border-radius: 4px;
+  margin-right: 10px;
 }
