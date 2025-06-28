@@ -38,8 +38,6 @@ import { NgChartsModule } from 'ng2-charts';
     ReactiveFormsModule,
     MatButtonModule,
     MatGridListModule,
-    BookingListComponent,
-    CalendarComponent,
     CommonModule,
     NgChartsModule,
   ],
@@ -48,6 +46,27 @@ import { NgChartsModule } from 'ng2-charts';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BookingComponent {
+  barChartData = {
+    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+    datasets: [
+      {
+        label: 'Bookings',
+        data: [12, 19, 8, 15, 10, 17],
+        backgroundColor: '#6366f1',
+      },
+    ],
+  };
+  barChartType: ChartType = 'bar';
+  barChartOptions: ChartOptions = {
+    responsive: true,
+    plugins: {
+      legend: { display: false },
+    },
+    scales: {
+      x: {},
+      y: { beginAtZero: true },
+    },
+  };
   pieChartData = {
     labels: ['Completed', 'Pending', 'Cancelled'],
     datasets: [

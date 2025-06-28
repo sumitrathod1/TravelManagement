@@ -19,6 +19,13 @@ export const routes: Routes = [
       ),
   },
   {
+    path: 'vehicle-card',
+    loadComponent: () =>
+      import('./vehicle/vehicle-card/vehicle-card.component').then(
+        (m) => m.VehicleCardComponent
+      ),
+  },
+  {
     path: 'booking',
     loadComponent: () =>
       import('./booking/booking.component').then((m) => m.BookingComponent),

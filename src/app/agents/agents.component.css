@@ -142,7 +142,7 @@
   padding: 4px 14px;
   border-radius: 12px;
   font-size: 0.97rem;
-  font-weight: 600;
+  font-weight: 500;
   margin-left: 8px;
 }
 .agent-status.active {
@@ -165,11 +165,11 @@
 }
 .agent-stats .earned {
   color: #22c55e;
-  font-weight: 600;
+  font-weight: 500;
 }
 .agent-stats .pending {
   color: #ef4444;
-  font-weight: 600;
+  font-weight: 500;
 }
 
 /* Agent Actions */

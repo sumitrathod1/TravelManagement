@@ -26,27 +26,8 @@ import { NgChartsModule } from 'ng2-charts';
   styleUrl: './home.component.css',
 })
 export class HomeComponent {
-  barChartData = {
-    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
-    datasets: [
-      {
-        label: 'Bookings',
-        data: [12, 19, 8, 15, 10, 17],
-        backgroundColor: '#6366f1',
-      },
-    ],
-  };
-  barChartType: ChartType = 'bar';
-  barChartOptions: ChartOptions = {
-    responsive: true,
-    plugins: {
-      legend: { display: false },
-    },
-    scales: {
-      x: {},
-      y: { beginAtZero: true },
-    },
-  };
+  bookings: any[] = [];
+  revenue: any = {};
 
   lineChartData = {
     labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
@@ -138,6 +119,31 @@ export class HomeComponent {
     });
     this._employeServices.employeCount$.subscribe((count) => {
       this.totalEmployees = count;
+    });
+    this.loadAllbookings();
+  }
+
+  loadAllbookings() {
+    const colorList = [
+      '#00bcd4',
+      '#f59e42',
+      '#22c55e',
+      '#a78bfa',
+      '#ef4444',
+      '#6366f1',
+    ];
+    this._bookingservice.loadBookings().subscribe({
+      next: (data) => {
+        console.log('API Response:', data);
+        this.bookings = data.bookings.map((booking: any, idx: number) => ({
+          ...booking,
+          color: colorList[idx % colorList.length],
+        }));
+        this.revenue = data.revenueStats || {};
+      },
+      error: (err) => {
+        console.error('Error loading bookings:', err);
+      },
     });
   }
 }

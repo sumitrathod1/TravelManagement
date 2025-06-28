@@ -13,7 +13,7 @@
       <span class="color-dot" style="background-color: #00bcd4"></span> Dzire
       <span class="color-dot" style="background-color: #f59e42"></span> Ertiga
       <span class="color-dot" style="background-color: #22c55e"></span> Innova
-      <span class="color-dot" style="background-color: #a78bfa"></span> Fortuner
+      <span class="color-dot" style="background-color: #a78bfa"></span> TT20S
     </p>
   </div>
   <div class="calendar-grid">
@@ -33,33 +33,5 @@
         ></span>
       </div>
     </div>
-  </div>
-</div>
-
-<!-- Popup -->
-<div class="popup-backdrop" *ngIf="showPopup" (click)="closePopup()"></div>
-<div class="popup-container" *ngIf="showPopup">
-  <div class="popup-header">
-    <h3>{{ selectedDate | date : "fullDate" }}</h3>
-    <button class="close" (click)="closePopup()">&times;</button>
-  </div>
-  <div class="popup-body">
-    <div
-      *ngFor="let booking of getBookingsForDate(selectedDate)"
-      class="popup-booking"
-      [ngStyle]="{
-        borderLeft: '5px solid ' + booking.color,
-        background: booking.bg
-      }"
-    >
-      <div class="title">{{ booking.title }}</div>
-      <div class="time">{{ booking.time }}</div>
-      <div class="client">Client: {{ booking.client }}</div>
-      <span class="color-dot" [style.backgroundColor]="booking.color"></span>
-    </div>
-  </div>
-  <div class="popup-actions">
-    <button class="add-btn">+ Add Booking</button>
-    <button class="edit-btn">✎ Edit Day</button>
   </div>
 </div>

@@ -2,7 +2,7 @@
   <div class="row g-3">
     <div class="col-6 col-md-3">
       <a
-        class="card text-center shadow-sm border-primary text-decoration-none"
+        class="card text-center shadow-sm text-decoration-none"
         routerLink="/booking-table"
         style="cursor: pointer"
       >
@@ -17,7 +17,7 @@
     <div class="col-6 col-md-3">
       <a
         style="cursor: pointer"
-        class="card text-center shadow-sm border-success"
+        class="card text-center shadow-sm"
         routerLink="/booking-list"
       >
         <div class="card-body">
@@ -28,7 +28,7 @@
       </a>
     </div>
 
-    <div class="col-6 col-md-3">
+    <!-- <div class="col-6 col-md-3">
       <a
         style="cursor: pointer"
         class="card text-center shadow-sm border-warning"
@@ -40,9 +40,9 @@
           <h5 class="fw-bold">5</h5>
         </div>
       </a>
-    </div>
+    </div> -->
 
-    <div class="col-6 col-md-3">
+    <!-- <div class="col-6 col-md-3">
       <a
         style="cursor: pointer"
         class="card text-center shadow-sm border-danger"
@@ -53,10 +53,21 @@
           <h5 class="fw-bold">₹ stats.revenue</h5>
         </div>
       </a>
-    </div>
+    </div> -->
   </div>
 
   <div class="row g-4 mt-2">
+    <div class="col-12 col-md-6">
+      <div class="card p-3 chart-card shadow-effect">
+        <h5>Monthly Bookings</h5>
+        <canvas
+          baseChart
+          [data]="barChartData"
+          [type]="barChartType"
+          [options]="barChartOptions"
+        ></canvas>
+      </div>
+    </div>
     <div class="col-12 col-md-6">
       <div class="card p-3 chart-card shadow-effect">
         <h5>Bookings Distribution</h5>

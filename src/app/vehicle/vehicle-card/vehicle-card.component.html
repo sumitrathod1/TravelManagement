@@ -1,0 +1,34 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-4 mb-4" *ngFor="let vehicle of vehicleTypes">
+      <div class="card" style="width: 100%">
+        <div class="card-body">
+          <div class="row mb-2">
+            <div class="col-6 text-start fw-bold">{{ vehicle.Name }}</div>
+            <div class="col-6 text-end">{{ vehicle.Type }}</div>
+          </div>
+          <div class="row mb-2">
+            <div class="col-6 text-start fw-bold">Year</div>
+            <div class="col-6 text-end">{{ vehicle.Year }}</div>
+          </div>
+          <div class="row mb-2">
+            <div class="col-6 text-start fw-bold">Next Service date</div>
+            <div class="col-6 text-end">{{ vehicle.nextservice }}</div>
+          </div>
+          <div class="row mb-2">
+            <div class="col-6 text-start fw-bold">Next EMI</div>
+            <div class="col-6 text-end">{{ vehicle.Next_Emi }}</div>
+          </div>
+          <div class="row mt-3">
+            <div class="col-6">
+              <button class="btn btn-success w-100">View Doc.</button>
+            </div>
+            <div class="col-6">
+              <button class="btn btn-primary w-100">Edit</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

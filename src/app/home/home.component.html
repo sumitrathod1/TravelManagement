@@ -1,6 +1,6 @@
 <div class="dashboard-container">
   <div>
-    <app-calendar></app-calendar>
+    <app-calendar [newBookings]="bookings"></app-calendar>
   </div>
   <div class="row g-4">
     <div class="col-6 col-md-6">
@@ -23,7 +23,7 @@
       <div class="dashboard-card border-pink">
         <div>
           <div class="dashboard-label fw-bold">Todays Earning</div>
-          <div class="text-center">$24,389</div>
+          <div class="text-center">₹{{ revenue?.today }}</div>
         </div>
       </div>
     </div>
@@ -31,58 +31,38 @@
       <div class="dashboard-card border-yellow">
         <div>
           <div class="dashboard-label fw-bold">Revenue</div>
-          <div class="text-center">$24,389</div>
+          <div class="text-center">{{ revenue.total }}</div>
         </div>
       </div>
     </div>
   </div>
-
-  <!-- <div class="row g-2">
-    <div class="col-12 col-md-6 col-md-4 mb-4">
-      <h3 class="section-title mt-2">Reccent Booking</h3>
-      <div class="driver-list">
-        <div class="driver-card" *ngFor="let driver of activeDrivers">
-          <img
-            [src]="driver.image"
-            alt="{{ driver.name }}"
-            class="driver-image"
-          />
-          <div>
-            <p class="driver-name">{{ driver.name }}</p>
-            <p class="driver-location">Location: {{ driver.location }}</p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col-12 col-md-6 col-md-4 mb-4"></div>
-    <div class="col-12 col-md-6 col-md-4 mb-4"></div>
-  </div> -->
 
   <div class="d-flex justify-content-between align-items-center mt-3 p-2">
     <h3>Recent Bookings</h3>
   </div>
 
-  <div class="booking-card" *ngFor="let booking of recentBookings">
+  <div class="booking-card" *ngFor="let booking of bookings | slice : 0 : 5">
     <div class="d-flex">
       <div
         class="status-bar"
         [ngStyle]="{ 'background-color': booking.color }"
       ></div>
-      <img [src]="booking.image" class="profile-img" alt="User" />
 
       <div class="booking-info ms-2 flex-grow-1">
         <div class="d-flex justify-content-between">
           <div>
-            <h6 class="mb-1">{{ booking.name }}</h6>
-            <p class="text-muted small mb-0">{{ booking.room }}</p>
+            <h6 class="mb-1">{{ booking.customer.customerName }}</h6>
             <p class="text-muted small mb-0">
-              {{ booking.label }}: {{ booking.date }}
+              {{ booking.customer.customerNumber }}
+            </p>
+            <p class="text-muted small mb-0">
+              {{ booking.travelDate }}: {{ booking.traveltime }}
             </p>
           </div>
           <div class="text-end">
-            <span class="badge" [ngClass]="booking.statusClass">{{
+            <!-- <span class="badge" [ngClass]="booking.statusClass">{{
               booking.status
-            }}</span>
+            }}</span> -->
             <h6 class="mt-2">₹{{ booking.amount }}</h6>
           </div>
         </div>
@@ -91,17 +71,6 @@
   </div>
 
   <div class="row g-4">
-    <div class="col-12 col-md-6">
-      <div class="card p-3 chart-card shadow-effect">
-        <h5>Monthly Bookings</h5>
-        <canvas
-          baseChart
-          [data]="barChartData"
-          [type]="barChartType"
-          [options]="barChartOptions"
-        ></canvas>
-      </div>
-    </div>
     <div class="col-12 col-md-6">
       <div class="card p-3 chart-card shadow-effect">
         <h5>Earnings Trend</h5>

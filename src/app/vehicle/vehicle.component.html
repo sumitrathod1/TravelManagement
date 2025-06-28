@@ -1,49 +1,12 @@
-<!-- <div class="container">
-  <div class="row">
-    <div class="col-md-4 mb-4" *ngFor="let vehicle of vehicleTypes">
-      <div class="card" style="width: 100%">
-        <img
-          class="card-img-top"
-          src="https://img.autocarindia.com/model/uploads/modelimages/Hyundai-Creta-030420250118.jpg?w=350&h=250&q=85&c=1"
-          alt="Card image"
-          style="width: 100%; height: 200px; object-fit: cover"
-        />
-        <div class="card-body">
-          <div class="row mb-2">
-            <div class="col-6 text-start fw-bold">{{ vehicle.Name }}</div>
-            <div class="col-6 text-end">{{ vehicle.Type }}</div>
-          </div>
-          <div class="row mb-2">
-            <div class="col-6 text-start fw-bold">Year</div>
-            <div class="col-6 text-end">{{ vehicle.Year }}</div>
-          </div>
-          <div class="row mb-2">
-            <div class="col-6 text-start fw-bold">Next Service date</div>
-            <div class="col-6 text-end">{{ vehicle.nextservice }}</div>
-          </div>
-          <div class="row mb-2">
-            <div class="col-6 text-start fw-bold">Next EMI</div>
-            <div class="col-6 text-end">{{ vehicle.Next_Emi }}</div>
-          </div>
-          <div class="row mt-3">
-            <div class="col-6">
-              <button class="btn btn-success w-100">View Doc.</button>
-            </div>
-            <div class="col-6">
-              <button class="btn btn-primary w-100">Edit</button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div> -->
-
 <div class="container my-4">
   <div class="row g-4">
     <!-- Total Vehicles -->
-    <div class="col-6 col-md-3" (click)="documentForm()">
-      <div class="card border-success p-2" style="min-height: 80px">
+    <div
+      class="col-6 col-md-3"
+      routerLink="/vehicle-card"
+      (click)="documentForm()"
+    >
+      <div class="card p-2" style="min-height: 80px">
         <div class="card-body text-center">
           <div class="mb-1">
             <i class="bi bi-truck fs-4 text-success"></i>
@@ -51,15 +14,12 @@
           <h6 class="card-title">Total Vehicles</h6>
           <h4 class="card-text fw-bold">4</h4>
         </div>
-        <div class="card-footer bg-light text-center">
-          <a class="text-success text-decoration-none fw-medium">View all</a>
-        </div>
       </div>
     </div>
 
     <!-- Active Vehicles -->
     <div class="col-6 col-md-3" (click)="expexnseForm()">
-      <div class="card border-success p-2" style="min-height: 80px">
+      <div class="card p-2" style="min-height: 80px">
         <div class="card-body text-center">
           <div class="mb-1">
             <i class="bi bi-check-circle fs-4 text-success"></i>
@@ -67,44 +27,72 @@
           <h6 class="card-title">documents</h6>
           <h4 class="card-text fw-bold">18</h4>
         </div>
-        <div class="card-footer bg-light text-center">
-          <a class="text-success text-decoration-none fw-medium"
-            >View details</a
-          >
+      </div>
+    </div>
+  </div>
+
+  <div class="maintenance-header">
+    <span class="title">Maintenance Schedule</span>
+    <a class="view-all" href="#">View All</a>
+  </div>
+  <div class="maintenance-list">
+    <div class="maintenance-card" *ngFor="let item of maintenanceList">
+      <div class="maint-icon" [ngClass]="item.iconBg">
+        <i class="bi" [ngClass]="item.icon"></i>
+      </div>
+      <div class="maint-info">
+        <div class="maint-title">{{ item.title }}</div>
+        <div class="maint-subtitle">
+          {{ item.subtitle }}
+          <span class="maint-date">{{ item.date }}</span>
+        </div>
+      </div>
+      <div class="maint-right">
+        <div class="maint-amount">₹{{ item.amount | number }}</div>
+        <div
+          *ngIf="item.status"
+          class="maint-status"
+          [ngClass]="item.statusClass"
+        >
+          {{ item.status }}
         </div>
       </div>
     </div>
+  </div>
 
-    <!-- In Maintenance -->
-    <div class="col-6 col-md-3" (click)="maintenanceForm()">
-      <div class="card border-warning p-2" style="min-height: 80px">
-        <div class="card-body text-center">
-          <div class="mb-1">
-            <i class="bi bi-tools fs-4 text-warning"></i>
-          </div>
-          <h5 class="card-title fw-bold">In Maintenance</h5>
-          <h4 class="card-text fw-bold">4</h4>
-        </div>
-        <div class="card-footer bg-light text-center">
-          <a class="text-warning text-decoration-none fw-medium">Schedule</a>
-        </div>
+  <div class="expenses-header">
+    <span class="title">Recent Expenses</span>
+    <a class="view-all" href="#">View All</a>
+  </div>
+  <div class="expenses-list">
+    <div class="expenses-card" *ngFor="let exp of recentExpenses">
+      <div class="exp-icon" [ngClass]="exp.iconBg">
+        <i class="bi" [ngClass]="exp.icon"></i>
+      </div>
+      <div class="exp-info">
+        <div class="exp-title">{{ exp.title }}</div>
+        <div class="exp-subtitle">{{ exp.subtitle }}</div>
+      </div>
+      <div class="exp-amount" [ngClass]="exp.amountClass">
+        ₹{{ exp.amount | number }}
       </div>
     </div>
+  </div>
 
-    <!-- Inactive Vehicles -->
-    <div class="col-6 col-md-3">
-      <div class="card border p-2" style="min-height: 80px">
-        <div class="card-body text-center">
-          <div class="mb-1">
-            <i class="bi bi-truck fs-4 text-danger"></i>
-          </div>
-          <h5 class="card-title fw-bold">Earnings</h5>
-          <h4 class="card-text fw-bold">2</h4>
-        </div>
-        <div class="card-footer bg-light text-center">
-          <a class="text-decoration-none fw-medium">View details</a>
-        </div>
+  <div class="doc-header">
+    <span class="title">Document Status</span>
+    <a class="manage-link" href="#">Manage</a>
+  </div>
+  <div class="doc-list">
+    <div class="doc-card" *ngFor="let doc of documentStatusList">
+      <div class="doc-icon" [ngClass]="doc.iconBg">
+        <i class="bi" [ngClass]="doc.icon"></i>
       </div>
+      <div class="doc-info">
+        <div class="doc-title">{{ doc.title }}</div>
+        <div class="doc-subtitle">{{ doc.subtitle }}</div>
+      </div>
+      <div class="doc-badge" [ngClass]="doc.statusClass">{{ doc.status }}</div>
     </div>
   </div>
 </div>

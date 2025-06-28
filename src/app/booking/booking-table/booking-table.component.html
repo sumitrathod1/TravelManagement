@@ -62,7 +62,7 @@
   <!-- Summary -->
   <div class="d-flex justify-content-between mb-3">
     <div class="summary-card bg-primary text-white text-center">
-      <div class="fw-bold">12</div>
+      <div class="fw-bold">{{ bookings.length }}</div>
       <small>Total</small>
     </div>
     <div class="summary-card bg-success text-white text-center">
@@ -100,31 +100,30 @@
   </div>
 </div> -->
 
-  <div *ngFor="let booking of bookingsss" class="booking-card">
+  <div *ngFor="let booking of bookings" class="booking-card">
     <div class="booking-left">
-      <div class="icon-box">
+      <!-- <div class="icon-box">
         <span class="material-icons">{{ booking.icon }}</span>
-      </div>
+      </div> -->
     </div>
 
     <div class="booking-middle">
-      <div class="title">{{ booking.title }}</div>
-      <div class="location">{{ booking.location }}</div>
+      <div class="title">{{ booking.customer.customerName }}</div>
+      <div class="location">{{ booking.customer.customerNumber }}</div>
 
       <div class="dates">
         <div class="date-section">
-          <small>Pick-up</small>
-          <div>{{ booking.pickupDate }}</div>
+          <small>{{ booking.from }}</small>
+          <div>{{ booking.travelDate }}</div>
         </div>
         <div class="date-section">
-          <small>Drop-off</small>
-          <div>{{ booking.dropoffDate }}</div>
+          <small>{{ booking.to }}</small>
+          <div>{{ booking.traveltime }}</div>
         </div>
       </div>
 
       <div class="duration">
-        <span class="material-icons">calendar_today</span>
-        {{ booking.duration }}
+        <div>{{ booking.bookingType }}</div>
       </div>
     </div>
 
@@ -132,7 +131,7 @@
       <span class="status" [ngClass]="booking.status.toLowerCase()">{{
         booking.status
       }}</span>
-      <div class="price">{{ booking.price }}</div>
+      <div class="price">{{ booking.amount }}</div>
     </div>
   </div>
 </div>
