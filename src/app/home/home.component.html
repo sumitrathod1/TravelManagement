@@ -1,85 +1,92 @@
-<div class="dashboard-container">
-  <div>
-    <app-calendar [newBookings]="bookings"></app-calendar>
-  </div>
-  <div class="row g-4">
-    <div class="col-6 col-md-6">
-      <div class="dashboard-card border-emerald">
-        <div>
-          <div class="dashboard-label fw-bold">Bookings</div>
-          <div class="text-center">{{ totalBookings }}</div>
-        </div>
-      </div>
+<div *ngIf="isLoading" class="loader-container">
+  <div class="spinner"></div>
+</div>
+<div *ngIf="!isLoading">
+  <div class="dashboard-container">
+    <div>
+      <app-calendar [newBookings]="bookings"></app-calendar>
     </div>
-    <div class="col-6 col-md-6">
-      <div class="dashboard-card border-amber">
-        <div>
-          <div class="dashboard-label fw-bold text-center">Todays Bookings</div>
-          <div class="text-center">9</div>
-        </div>
-      </div>
-    </div>
-    <div class="col-6 col-md-6">
-      <div class="dashboard-card border-pink">
-        <div>
-          <div class="dashboard-label fw-bold">Todays Earning</div>
-          <div class="text-center">₹{{ revenue?.today }}</div>
-        </div>
-      </div>
-    </div>
-    <div class="col-6 col-md-6">
-      <div class="dashboard-card border-yellow">
-        <div>
-          <div class="dashboard-label fw-bold">Revenue</div>
-          <div class="text-center">{{ revenue.total }}</div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="d-flex justify-content-between align-items-center mt-3 p-2">
-    <h3>Recent Bookings</h3>
-  </div>
-
-  <div class="booking-card" *ngFor="let booking of bookings | slice : 0 : 5">
-    <div class="d-flex">
-      <div
-        class="status-bar"
-        [ngStyle]="{ 'background-color': booking.color }"
-      ></div>
-
-      <div class="booking-info ms-2 flex-grow-1">
-        <div class="d-flex justify-content-between">
+    <div class="row g-4">
+      <div class="col-6 col-md-6">
+        <div class="dashboard-card border-emerald">
           <div>
-            <h6 class="mb-1">{{ booking.customer.customerName }}</h6>
-            <p class="text-muted small mb-0">
-              {{ booking.customer.customerNumber }}
-            </p>
-            <p class="text-muted small mb-0">
-              {{ booking.travelDate }}: {{ booking.traveltime }}
-            </p>
+            <div class="dashboard-label fw-bold">Bookings</div>
+            <div class="text-center">{{ totalBookings }}</div>
           </div>
-          <div class="text-end">
-            <!-- <span class="badge" [ngClass]="booking.statusClass">{{
+        </div>
+      </div>
+      <div class="col-6 col-md-6">
+        <div class="dashboard-card border-amber">
+          <div>
+            <div class="dashboard-label fw-bold text-center">
+              Todays Bookings
+            </div>
+            <div class="text-center">{{ todayBookings }}</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-6 col-md-6">
+        <div class="dashboard-card border-pink">
+          <div>
+            <div class="dashboard-label fw-bold">Todays Earning</div>
+            <div class="text-center">₹{{ revenue?.today }}</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-6 col-md-6">
+        <div class="dashboard-card border-yellow">
+          <div>
+            <div class="dashboard-label fw-bold">Revenue</div>
+            <div class="text-center">{{ revenue.total }}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="d-flex justify-content-between align-items-center mt-3 p-2">
+      <h3>Recent Bookings</h3>
+    </div>
+
+    <div class="booking-card" *ngFor="let booking of bookings | slice : 0 : 4">
+      <div class="d-flex">
+        <div
+          class="status-bar"
+          [ngStyle]="{ 'background-color': booking.color }"
+        ></div>
+
+        <div class="booking-info ms-2 flex-grow-1">
+          <div class="d-flex justify-content-between">
+            <div>
+              <h3 class="mb-1">{{ booking.customer.customerName }}</h3>
+              <h4 class="text-muted small mb-0">
+                {{ booking.customer.customerNumber }}
+              </h4>
+              <h4 class="text-muted small mb-0">
+                {{ booking.travelDate }}: {{ booking.traveltime }}
+              </h4>
+            </div>
+            <div class="text-end">
+              <!-- <span class="badge" [ngClass]="booking.statusClass">{{
               booking.status
             }}</span> -->
-            <h6 class="mt-2">₹{{ booking.amount }}</h6>
+              <h2 class="mt-2">₹{{ booking.amount }}</h2>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
 
-  <div class="row g-4">
-    <div class="col-12 col-md-6">
-      <div class="card p-3 chart-card shadow-effect">
-        <h5>Earnings Trend</h5>
-        <canvas
-          baseChart
-          [data]="lineChartData"
-          [type]="lineChartType"
-          [options]="lineChartOptions"
-        ></canvas>
+    <div class="row g-4">
+      <div class="col-12 col-md-6">
+        <div class="card p-3 chart-card shadow-effect">
+          <h5>Earnings Trend</h5>
+          <canvas
+            baseChart
+            [data]="lineChartData"
+            [type]="lineChartType"
+            [options]="lineChartOptions"
+          ></canvas>
+        </div>
       </div>
     </div>
   </div>

@@ -65,15 +65,15 @@
     <a class="view-all" href="#">View All</a>
   </div>
   <div class="expenses-list">
-    <div class="expenses-card" *ngFor="let exp of recentExpenses">
-      <div class="exp-icon" [ngClass]="exp.iconBg">
-        <i class="bi" [ngClass]="exp.icon"></i>
+    <div class="expenses-card" *ngFor="let exp of allExpenses">
+      <div class="exp-icon" [ngClass]="getExpenseDisplay(exp).iconBg">
+        <i class="bi" [ngClass]="getExpenseDisplay(exp).icon"></i>
       </div>
       <div class="exp-info">
-        <div class="exp-title">{{ exp.title }}</div>
-        <div class="exp-subtitle">{{ exp.subtitle }}</div>
+        <div class="exp-title">{{ exp.vehicle.vehicleName }}</div>
+        <div class="exp-subtitle">{{ exp.categoryType }}</div>
       </div>
-      <div class="exp-amount" [ngClass]="exp.amountClass">
+      <div class="exp-amount" [ngClass]="'text-danger'">
         ₹{{ exp.amount | number }}
       </div>
     </div>
@@ -84,15 +84,27 @@
     <a class="manage-link" href="#">Manage</a>
   </div>
   <div class="doc-list">
-    <div class="doc-card" *ngFor="let doc of documentStatusList">
-      <div class="doc-icon" [ngClass]="doc.iconBg">
-        <i class="bi" [ngClass]="doc.icon"></i>
+    <div class="doc-card" *ngFor="let doc of vehicleDocuments">
+      <div class="doc-icon" [ngClass]="getDocumentStatus(doc).iconBg">
+        <i class="bi" [ngClass]="getDocumentStatus(doc).icon"></i>
       </div>
       <div class="doc-info">
-        <div class="doc-title">{{ doc.title }}</div>
-        <div class="doc-subtitle">{{ doc.subtitle }}</div>
+        <div class="doc-title">
+          {{ doc.title }}: <span>{{ doc.vehicle?.vehicleName }}</span>
+        </div>
+        <div class="doc-subtitle">{{ doc.vehicle?.vehicleNumber }}</div>
+        <div class="maint-subtitle">
+          <span class="maint-date">
+            {{ doc.expiryDate | date : "dd MMM, yyyy" }}
+            <span class="text-muted">
+              ({{ getDaysLeft(doc.expiryDate) }})
+            </span>
+          </span>
+        </div>
       </div>
-      <div class="doc-badge" [ngClass]="doc.statusClass">{{ doc.status }}</div>
+      <div class="doc-badge" [ngClass]="getDocumentStatus(doc).statusClass">
+        {{ getDocumentStatus(doc).status }}
+      </div>
     </div>
   </div>
 </div>

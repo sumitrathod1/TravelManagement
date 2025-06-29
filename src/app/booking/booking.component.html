@@ -1,34 +1,38 @@
-<div class="container mt-4">
-  <div class="row g-3">
-    <div class="col-6 col-md-3">
-      <a
-        class="card text-center shadow-sm text-decoration-none"
-        routerLink="/booking-table"
-        style="cursor: pointer"
-      >
-        <div class="card-body">
-          <i class="bi bi-car-front fs-2 text-primary"></i>
-          <h6 class="mt-2">Total Bookings</h6>
-          <h5 class="fw-bold">totalBookings</h5>
-        </div>
-      </a>
-    </div>
+<div *ngIf="isLoading" class="loader-container">
+  <div class="spinner"></div>
+</div>
+<div *ngIf="!isLoading">
+  <div class="container mt-4">
+    <div class="row g-3">
+      <div class="col-6 col-md-3">
+        <a
+          class="card text-center shadow-sm text-decoration-none"
+          routerLink="/booking-table"
+          style="cursor: pointer"
+        >
+          <div class="card-body">
+            <i class="bi bi-car-front fs-2 text-primary"></i>
+            <h6 class="mt-2">Total Bookings</h6>
+            <h5 class="fw-bold">{{ totalBookings }}</h5>
+          </div>
+        </a>
+      </div>
 
-    <div class="col-6 col-md-3">
-      <a
-        style="cursor: pointer"
-        class="card text-center shadow-sm"
-        routerLink="/booking-list"
-      >
-        <div class="card-body">
-          <i class="bi bi-person-vcard-fill fs-2 text-success"></i>
-          <h6 class="mt-2">Customer Details</h6>
-          <h5 class="fw-bold">stats.assigned</h5>
-        </div>
-      </a>
-    </div>
+      <div class="col-6 col-md-3">
+        <a
+          style="cursor: pointer"
+          class="card text-center shadow-sm"
+          routerLink="/booking-list"
+        >
+          <div class="card-body">
+            <i class="bi bi-person-vcard-fill fs-2 text-success"></i>
+            <h6 class="mt-2">Customer Details</h6>
+            <h5 class="fw-bold">stats.assigned</h5>
+          </div>
+        </a>
+      </div>
 
-    <!-- <div class="col-6 col-md-3">
+      <!-- <div class="col-6 col-md-3">
       <a
         style="cursor: pointer"
         class="card text-center shadow-sm border-warning"
@@ -42,7 +46,7 @@
       </a>
     </div> -->
 
-    <!-- <div class="col-6 col-md-3">
+      <!-- <div class="col-6 col-md-3">
       <a
         style="cursor: pointer"
         class="card text-center shadow-sm border-danger"
@@ -54,29 +58,30 @@
         </div>
       </a>
     </div> -->
-  </div>
-
-  <div class="row g-4 mt-2">
-    <div class="col-12 col-md-6">
-      <div class="card p-3 chart-card shadow-effect">
-        <h5>Monthly Bookings</h5>
-        <canvas
-          baseChart
-          [data]="barChartData"
-          [type]="barChartType"
-          [options]="barChartOptions"
-        ></canvas>
-      </div>
     </div>
-    <div class="col-12 col-md-6">
-      <div class="card p-3 chart-card shadow-effect">
-        <h5>Bookings Distribution</h5>
-        <canvas
-          baseChart
-          [data]="pieChartData"
-          [type]="pieChartType"
-          [options]="pieChartOptions"
-        ></canvas>
+
+    <div class="row g-4 mt-2">
+      <div class="col-12 col-md-6">
+        <div class="card p-3 chart-card shadow-effect">
+          <h5>Monthly Bookings</h5>
+          <canvas
+            baseChart
+            [data]="barChartData"
+            [type]="barChartType"
+            [options]="barChartOptions"
+          ></canvas>
+        </div>
+      </div>
+      <div class="col-12 col-md-6">
+        <div class="card p-3 chart-card shadow-effect">
+          <h5>Bookings Distribution</h5>
+          <canvas
+            baseChart
+            [data]="pieChartData"
+            [type]="pieChartType"
+            [options]="pieChartOptions"
+          ></canvas>
+        </div>
       </div>
     </div>
   </div>

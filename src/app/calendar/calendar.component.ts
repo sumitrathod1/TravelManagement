@@ -17,7 +17,7 @@ const VEHICLE_COLOR_MAP: Record<string, string> = {
   Dzire: '#00bcd4',
   Ertiga: '#f59e42',
   Innova: '#22c55e',
-  TT20: '#a78bfa',
+  TT20S: '#a78bfa',
   TT15: '#6366f1',
 };
 
@@ -56,7 +56,6 @@ export class CalendarComponent implements OnChanges {
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes['newBookings']) {
-      console.log('New bookings:', this.newBookings);
       this.bookings = this.newBookings.map((b) => ({
         ...b,
         color:
@@ -64,7 +63,6 @@ export class CalendarComponent implements OnChanges {
           VEHICLE_COLOR_MAP['Default'],
         date: b.travelDate,
       }));
-      console.log('Bookings with color:', this.bookings);
     }
   }
 

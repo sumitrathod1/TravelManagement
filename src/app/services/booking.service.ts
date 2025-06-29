@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, Subject, tap } from 'rxjs';
+import { shareReplay } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
@@ -9,6 +10,7 @@ export class BookingService {
   private baseUrl: string = 'https://localhost:7183/api/Booking/';
 
   //private baseUrl: string = 'http://192.168.133.17:5006/api/Booking/';
+  private bookingsCache$?: Observable<any>;
 
   private bookingCountSubject = new BehaviorSubject<number>(0);
   bookingCount$ = this.bookingCountSubject.asObservable();
@@ -27,7 +29,7 @@ export class BookingService {
       to: booking.to,
       pax: booking.Pax,
       amount: booking.amount,
-      payment: booking.payment || null,
+      payment: booking.payment ? booking.payment : 0,
       bookingType: booking.bookingType,
       alternateNumber: 0,
       bookingStatus: 'string',
@@ -49,11 +51,24 @@ export class BookingService {
       .pipe(tap(() => this.bookingUpdatedSubject.next()));
   }
 
+  // loadBookings(): Observable<any> {
+  //   return this._http.get(`${this.baseUrl}View-Bookings`);
+  // }
   loadBookings(): Observable<any> {
-    return this._http.get(`${this.baseUrl}View-Bookings`);
+    if (!this.bookingsCache$) {
+      this.bookingsCache$ = this._http
+        .get(`${this.baseUrl}View-Bookings`)
+        .pipe(shareReplay(1));
+    }
+    return this.bookingsCache$;
+  }
+
+  // Agar aapko cache clear karna ho (e.g. new booking ke baad)
+  clearBookingsCache() {
+    this.bookingsCache$ = undefined;
   }
 
   updateBookingCount(count: number) {
-    this.bookingCountSubject.next(count); // 👈 Called from component
+    this.bookingCountSubject.next(count);
   }
 }

@@ -13,4 +13,12 @@ export class VehicleService {
   getAllVehicles() {
     return this._http.get(`${this.baseUrl}GetallVehicles`);
   }
+
+  getAllExpences() {
+    return this._http.get(`${this.baseUrl}GetAllexpence`);
+  }
+
+  getAllDocuments() {
+    return this._http.get(`${this.baseUrl}GetAllDocuments`);
+  }
 }

@@ -6,8 +6,6 @@ import { FullCalendarModule } from '@fullcalendar/angular';
 
 import { CommonModule } from '@angular/common';
 import { MatDatepickerModule } from '@angular/material/datepicker';
-import { BookingTableComponent } from '../booking/booking-table/booking-table.component';
-import { EmployeeTableComponent } from '../employee/employee-table/employee-table.component';
 
 import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -15,8 +13,8 @@ import { BookingFormComponent } from '../booking/booking-form/booking-form.compo
 import { VehicleFormComponent } from '../vehicle/vehicle-form/vehicle-form.component';
 import { AddemployeeFormComponent } from '../employee/addemployee-form/addemployee-form.component';
 import { MatDialog } from '@angular/material/dialog';
-import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatMenuModule } from '@angular/material/menu';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -31,6 +29,7 @@ import { MatMenuModule } from '@angular/material/menu';
     FullCalendarModule,
     CommonModule,
     MatDatepickerModule,
+    RouterModule,
   ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css',

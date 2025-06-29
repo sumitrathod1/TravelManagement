@@ -66,4 +66,9 @@ export const routes: Routes = [
     loadComponent: () =>
       import('./calendar/calendar.component').then((m) => m.CalendarComponent),
   },
+  {
+    path: 'agents',
+    loadComponent: () =>
+      import('./agents/agents.component').then((m) => m.AgentsComponent),
+  },
 ];
