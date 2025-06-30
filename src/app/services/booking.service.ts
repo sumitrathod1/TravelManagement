@@ -38,8 +38,15 @@ export class BookingService {
       travelAgentName: booking.agent,
       customerWillPay: 0,
       ownerWillPay: 0,
+      // bookingDate: booking.travelDate
+      //   ? new Date(booking.travelDate).toISOString().split('T')[0]
+      //   : null,
       bookingDate: booking.travelDate
-        ? new Date(booking.travelDate).toISOString().split('T')[0]
+        ? (() => {
+            const d = new Date(booking.travelDate);
+            d.setHours(12, 0, 0, 0); // Noon set karo, timezone bug avoid hota hai
+            return d.toISOString().split('T')[0];
+          })()
         : null,
       vehicleId: booking.vehcile,
       userId: booking.driver,

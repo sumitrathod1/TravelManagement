@@ -21,4 +21,7 @@ export class VehicleService {
   getAllDocuments() {
     return this._http.get(`${this.baseUrl}GetAllDocuments`);
   }
+  getAllMaintenances() {
+    return this._http.get(`${this.baseUrl}GetVehicleMaintenance`);
+  }
 }

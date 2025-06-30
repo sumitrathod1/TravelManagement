@@ -36,19 +36,19 @@
     <a class="view-all" href="#">View All</a>
   </div>
   <div class="maintenance-list">
-    <div class="maintenance-card" *ngFor="let item of maintenanceList">
-      <div class="maint-icon" [ngClass]="item.iconBg">
-        <i class="bi" [ngClass]="item.icon"></i>
+    <div class="maintenance-card" *ngFor="let item of top4Maintenances">
+      <div class="maint-icon" [ngClass]="getMaintenanceDisplay(item).iconBg">
+        <i class="bi" [ngClass]="getMaintenanceDisplay(item).icon"></i>
       </div>
       <div class="maint-info">
-        <div class="maint-title">{{ item.title }}</div>
+        <div class="maint-title">{{ item.maintenanceType }}</div>
         <div class="maint-subtitle">
-          {{ item.subtitle }}
-          <span class="maint-date">{{ item.date }}</span>
+          {{ item.vehicle.vehicleName }}
+          <span class="maint-date">{{ item.nextduedate }}</span>
         </div>
       </div>
       <div class="maint-right">
-        <div class="maint-amount">₹{{ item.amount | number }}</div>
+        <!-- <div class="maint-amount">₹{{ item.amount | number }}</div> -->
         <div
           *ngIf="item.status"
           class="maint-status"
@@ -65,7 +65,7 @@
     <a class="view-all" href="#">View All</a>
   </div>
   <div class="expenses-list">
-    <div class="expenses-card" *ngFor="let exp of allExpenses">
+    <div class="expenses-card" *ngFor="let exp of top4Expenses">
       <div class="exp-icon" [ngClass]="getExpenseDisplay(exp).iconBg">
         <i class="bi" [ngClass]="getExpenseDisplay(exp).icon"></i>
       </div>
@@ -84,7 +84,7 @@
     <a class="manage-link" href="#">Manage</a>
   </div>
   <div class="doc-list">
-    <div class="doc-card" *ngFor="let doc of vehicleDocuments">
+    <div class="doc-card" *ngFor="let doc of top4Documents">
       <div class="doc-icon" [ngClass]="getDocumentStatus(doc).iconBg">
         <i class="bi" [ngClass]="getDocumentStatus(doc).icon"></i>
       </div>

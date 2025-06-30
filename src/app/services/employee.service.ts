@@ -46,6 +46,6 @@ export class EmployeeService {
   }
 
   updateEmployeeCount(count: number) {
-    this.employeeCountSubject.next(count); // 👈 Called from component
+    this.employeeCountSubject.next(count);
   }
 }

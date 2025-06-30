@@ -18,6 +18,7 @@ import { VehicleService } from '../services/vehicle.service';
 export class VehicleComponent {
   vehicleDocuments: any = [];
   allExpenses: any = [];
+  vehicleMaintenances: any = [];
   constructor(
     private _dilog: MatDialog,
     private _vehicleService: VehicleService
@@ -37,6 +38,7 @@ export class VehicleComponent {
   ngOnInit() {
     this.loadAllDocuments();
     this.loadExpenses();
+    this.loadMaintenance();
   }
 
   loadAllDocuments() {
@@ -57,10 +59,20 @@ export class VehicleComponent {
       next: (data) => {
         console.log('Expenses fetched successfully:', data);
         this.allExpenses = Array.isArray(data) ? data : [];
-        console.log('Expenses loaded:', this.recentExpenses);
       },
       error: (error) => {
         console.error('Error loading expenses:', error);
+      },
+    });
+  }
+
+  loadMaintenance() {
+    this._vehicleService.getAllMaintenances().subscribe({
+      next: (data) => {
+        this.vehicleMaintenances = Array.isArray(data) ? data : [];
+      },
+      error: (err) => {
+        console.error('Error loading expenses:', err);
       },
     });
   }
@@ -186,69 +198,44 @@ export class VehicleComponent {
     },
   ];
 
-  recentExpenses = [
-    {
-      icon: 'bi-car-front-fill',
-      iconBg: 'bg-red-light',
-      title: 'Accident Repair',
-      subtitle: 'Dec 10, 2024 • ABC-1234',
-      amount: 25000,
-      amountClass: 'text-danger',
-    },
-    {
-      icon: 'bi-file-earmark-text',
-      iconBg: 'bg-blue-light',
-      title: 'Document Renewal',
-      subtitle: 'Dec 8, 2024 • XYZ-5678',
-      amount: 3500,
-      amountClass: '',
-    },
-  ];
+  getMaintenanceDisplay(exp: any) {
+    switch (exp.maintenanceType) {
+      case 'oilChange':
+        return {
+          icon: 'bi-droplet-half',
+          iconBg: 'bg-orange',
+        };
+      case 'TireChange':
+        return {
+          icon: 'bi-circle-fill',
+          iconBg: 'bg-blue',
+        };
+      case 'Fuel':
+        return {
+          icon: 'bi-fuel-pump',
+          iconBg: 'bg-yellow-light',
+        };
+      case 'Service':
+        return {
+          icon: 'bi-gear-fill',
+          iconBg: 'bg-green',
+        };
+      default:
+        return {
+          icon: 'bi-gear-fill',
+          iconBg: 'bg-green',
+        };
+    }
+  }
 
-  recentBookings = [
-    {
-      name: 'Priya Sharma',
-      room: 'Hotel Deluxe Room',
-      date: 'Dec 25, 2024',
-      label: 'Check-in',
-      status: 'Confirmed',
-      statusClass: 'bg-success-subtle text-success',
-      amount: 4500,
-      image: 'https://i.pravatar.cc/150?img=1',
-      color: '#2ecc71',
-    },
-    {
-      name: 'Amit Kumar',
-      room: 'Conference Hall',
-      date: 'Dec 26, 2024',
-      label: 'Event',
-      status: 'Pending',
-      statusClass: 'bg-warning-subtle text-warning',
-      amount: 12000,
-      image: 'https://i.pravatar.cc/150?img=2',
-      color: '#e67e22',
-    },
-    {
-      name: 'Neha Patel',
-      room: 'Wedding Package',
-      date: 'Dec 28, 2024',
-      label: 'Event',
-      status: 'Confirmed',
-      statusClass: 'bg-primary-subtle text-primary',
-      amount: 85000,
-      image: 'https://i.pravatar.cc/150?img=3',
-      color: '#2980b9',
-    },
-    {
-      name: 'Rajesh Singh',
-      room: 'Standard Room',
-      date: 'Dec 24, 2024',
-      label: 'Cancelled',
-      status: 'Cancelled',
-      statusClass: 'bg-danger-subtle text-danger',
-      amount: 2800,
-      image: 'https://i.pravatar.cc/150?img=4',
-      color: '#c0392b',
-    },
-  ];
+  get top4Documents() {
+    return this.vehicleDocuments.slice(0, 4);
+  }
+  get top4Expenses() {
+    return this.allExpenses.slice(0, 4);
+  }
+
+  get top4Maintenances() {
+    return this.vehicleMaintenances.slice(0, 4);
+  }
 }
