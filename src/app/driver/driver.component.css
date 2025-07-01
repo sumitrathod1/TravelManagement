@@ -1,0 +1,10 @@
+.text-violet { color: #6366f1; }
+.dot { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 4px; }
+.dot-green { background: #22c55e; }
+.dot-red { background: #ef4444; }
+.card { border-radius: 12px; }
+.card-body { padding: 1rem 1.25rem; }
+.fs-4 { font-size: 1.5rem; }
+.fs-5 { font-size: 1.25rem; }
+.fs-6 { font-size: 1rem; }
+.gap-2 { gap: 0.5rem; }

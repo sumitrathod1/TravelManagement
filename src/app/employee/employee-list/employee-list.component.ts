@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { MatDialog } from '@angular/material/dialog';
+import { EmployeeService } from '../../services/employee.service';
 
 @Component({
   selector: 'app-employee-list',
@@ -9,6 +11,28 @@ import { CommonModule } from '@angular/common';
   styleUrl: './employee-list.component.css',
 })
 export class EmployeeListComponent {
+  drivers: any[] = [];
+  numberofDrivers: number = 0;
+  constructor(
+    private _dialog: MatDialog,
+    private _employeServeice: EmployeeService
+  ) {}
+
+  ngOnInit() {
+    this.loadDrivers();
+  }
+
+  loadDrivers() {
+    this._employeServeice.getAllEmployees().subscribe({
+      next: (data) => {
+        this.drivers = Array.isArray(data) ? data : [];
+        this.numberofDrivers = this.drivers.length;
+      },
+      error: (err) => {
+        console.error('Error loading drivers:', err);
+      },
+    });
+  }
   employees = [
     {
       Name: 'John Doe',

@@ -31,6 +31,27 @@
     </div>
   </div>
 
+  <div class="expenses-header">
+    <span class="title">Recent Expenses</span>
+    <a class="view-all" href="#">View All</a>
+  </div>
+  <div class="expenses-list">
+    <div class="expenses-card" *ngFor="let exp of top4Expenses">
+      <div class="exp-icon" [ngClass]="getExpenseDisplay(exp).iconBg">
+        <i class="bi" [ngClass]="getExpenseDisplay(exp).icon"></i>
+      </div>
+      <div class="exp-info">
+        <div class="exp-title">
+          {{ exp.vehicle.vehicleName }} No: {{ exp.vehicle.vehicleNumber }}
+        </div>
+        <div class="exp-subtitle">{{ exp.categoryType }}</div>
+      </div>
+      <div class="exp-amount" [ngClass]="'text-danger'">
+        ₹{{ exp.amount | number }}
+      </div>
+    </div>
+  </div>
+
   <div class="maintenance-header">
     <span class="title">Maintenance Schedule</span>
     <a class="view-all" href="#">View All</a>
@@ -43,8 +64,13 @@
       <div class="maint-info">
         <div class="maint-title">{{ item.maintenanceType }}</div>
         <div class="maint-subtitle">
-          {{ item.vehicle.vehicleName }}
-          <span class="maint-date">{{ item.nextduedate }}</span>
+          {{ item.vehicle.vehicleName }} No: {{ item.vehicle.vehicleNumber }}
+          <span class="maint-date">{{
+            item.nextduedate | date : "dd MMM, yyyy"
+          }}</span>
+          <span class="text-muted">
+            ({{ getDaysLeft(item.nextduedate) }})
+          </span>
         </div>
       </div>
       <div class="maint-right">
@@ -60,25 +86,6 @@
     </div>
   </div>
 
-  <div class="expenses-header">
-    <span class="title">Recent Expenses</span>
-    <a class="view-all" href="#">View All</a>
-  </div>
-  <div class="expenses-list">
-    <div class="expenses-card" *ngFor="let exp of top4Expenses">
-      <div class="exp-icon" [ngClass]="getExpenseDisplay(exp).iconBg">
-        <i class="bi" [ngClass]="getExpenseDisplay(exp).icon"></i>
-      </div>
-      <div class="exp-info">
-        <div class="exp-title">{{ exp.vehicle.vehicleName }}</div>
-        <div class="exp-subtitle">{{ exp.categoryType }}</div>
-      </div>
-      <div class="exp-amount" [ngClass]="'text-danger'">
-        ₹{{ exp.amount | number }}
-      </div>
-    </div>
-  </div>
-
   <div class="doc-header">
     <span class="title">Document Status</span>
     <a class="manage-link" href="#">Manage</a>
@@ -90,7 +97,7 @@
       </div>
       <div class="doc-info">
         <div class="doc-title">
-          {{ doc.title }}: <span>{{ doc.vehicle?.vehicleName }}</span>
+          {{ doc.title }}: <span>{{ doc.vehicle?.vehicleName }} </span>
         </div>
         <div class="doc-subtitle">{{ doc.vehicle?.vehicleNumber }}</div>
         <div class="maint-subtitle">

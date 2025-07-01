@@ -138,13 +138,58 @@ export class VehicleComponent {
     }
   }
 
-  getDaysLeftNumber(expiryDate: string): number {
+  getStatusByDate(
+    obj: any,
+    dateField: string
+  ): {
+    status: string;
+    statusClass: string;
+    icon: string;
+    iconBg: string;
+  } {
+    const dateStr = obj[dateField];
+    const daysLeft = this.getDaysLeftNumber(dateStr);
+
+    if (isNaN(daysLeft)) {
+      return {
+        status: 'Unknown',
+        statusClass: 'badge-unknown',
+        icon: 'bi-question-circle',
+        iconBg: 'bg-gray-200',
+      };
+    }
+    if (daysLeft > 30) {
+      return {
+        status: 'Valid',
+        statusClass: 'badge-valid',
+        icon: 'bi-credit-card-2-front-fill',
+        iconBg: 'bg-green-light',
+      };
+    } else if (daysLeft < 20 && daysLeft >= 0) {
+      return {
+        status: 'Soon',
+        statusClass: 'badge-warning',
+        icon: 'bi-shield-exclamation',
+        iconBg: 'bg-orange-light',
+      };
+    } else {
+      return {
+        status: 'Expired',
+        statusClass: 'badge-expired',
+        icon: 'bi-award-fill',
+        iconBg: 'bg-red-light',
+      };
+    }
+  }
+
+  getDaysLeftNumber(dateStr: string): number {
+    if (!dateStr) return NaN;
     const today = new Date();
-    const expiry = new Date(expiryDate);
+    const target = new Date(dateStr);
     today.setHours(0, 0, 0, 0);
-    expiry.setHours(0, 0, 0, 0);
+    target.setHours(0, 0, 0, 0);
     return Math.ceil(
-      (expiry.getTime() - today.getTime()) / (1000 * 60 * 60 * 24)
+      (target.getTime() - today.getTime()) / (1000 * 60 * 60 * 24)
     );
   }
 
@@ -165,38 +210,6 @@ export class VehicleComponent {
       return `${Math.abs(diff)} ecpired`;
     }
   }
-  maintenanceList = [
-    {
-      icon: 'bi-droplet-half',
-      iconBg: 'bg-orange',
-      title: 'Oil Change',
-      subtitle: 'Toyota Camry • ABC-1234',
-      date: 'Dec 15, 2024',
-      amount: 2500,
-      status: '',
-      statusClass: '',
-    },
-    {
-      icon: 'bi-circle-fill',
-      iconBg: 'bg-blue',
-      title: 'Tire Change',
-      subtitle: 'Mercedes Bus • XYZ-5678',
-      date: 'Dec 15, 2024',
-      amount: 15000,
-      status: 'Overdue',
-      statusClass: 'overdue',
-    },
-    {
-      icon: 'bi-gear-fill',
-      iconBg: 'bg-green',
-      title: 'Full Service',
-      subtitle: 'Honda SUV • DEF-9012',
-      date: 'Dec 20, 2024',
-      amount: 8500,
-      status: '',
-      statusClass: '',
-    },
-  ];
 
   getMaintenanceDisplay(exp: any) {
     switch (exp.maintenanceType) {

@@ -71,4 +71,9 @@ export const routes: Routes = [
     loadComponent: () =>
       import('./agents/agents.component').then((m) => m.AgentsComponent),
   },
+  {
+    path: 'drver',
+    loadComponent: () =>
+      import('./driver/driver.component').then((m) => m.DriverComponent),
+  },
 ];

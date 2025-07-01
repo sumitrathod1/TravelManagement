@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { AddemployeeFormComponent } from './addemployee-form/addemployee-form.component';
+import { EmployeeService } from '../services/employee.service';
 
 @Component({
   selector: 'app-employee',
@@ -12,29 +13,28 @@ import { AddemployeeFormComponent } from './addemployee-form/addemployee-form.co
   styleUrl: './employee.component.css',
 })
 export class EmployeeComponent {
-  constructor(private _dialog: MatDialog) {}
-  activeDrivers = [
-    {
-      name: 'Lucas Bennett',
-      location: '34.0522° N, 118.2437° W',
-      image: 'https://i.pravatar.cc/100?img=1',
-    },
-    {
-      name: 'Owen Carter',
-      location: '34.0522° N, 118.2437° W',
-      image: 'https://i.pravatar.cc/100?img=2',
-    },
-    {
-      name: 'Elijah Hayes',
-      location: '34.0522° N, 118.2437° W',
-      image: 'https://i.pravatar.cc/100?img=3',
-    },
-    {
-      name: 'Oliver Foster',
-      location: '34.0522° N, 118.2437° W',
-      image: 'https://i.pravatar.cc/100?img=4',
-    },
-  ];
+  drivers: any[] = [];
+  numberofDrivers: number = 0;
+  constructor(
+    private _dialog: MatDialog,
+    private _employeServeice: EmployeeService
+  ) {}
+
+  ngOnInit() {
+    this.loadDrivers();
+  }
+
+  loadDrivers() {
+    this._employeServeice.getAllEmployees().subscribe({
+      next: (data) => {
+        this.drivers = Array.isArray(data) ? data : [];
+        this.numberofDrivers = this.drivers.length;
+      },
+      error: (err) => {
+        console.error('Error loading drivers:', err);
+      },
+    });
+  }
 
   addDriver() {
     this._dialog.open(AddemployeeFormComponent);

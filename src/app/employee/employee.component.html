@@ -2,17 +2,7 @@
   <div class="stats-grid">
     <div class="stat-card" routerLink="/employee-list">
       <p class="stat-label">Active Drivers</p>
-      <p class="stat-value">125</p>
-    </div>
-
-    <div class="stat-card">
-      <p class="stat-label">Avg. Rating</p>
-      <p class="stat-value">4.8</p>
-    </div>
-
-    <div class="stat-card">
-      <p class="stat-label">Total Trips</p>
-      <p class="stat-value">5,2</p>
+      <p class="stat-value">{{ numberofDrivers }}</p>
     </div>
 
     <div class="stat-card" (click)="addDriver()">
@@ -23,10 +13,10 @@
 
   <h3 class="section-title">Active Drivers</h3>
   <div class="driver-list">
-    <div class="driver-card" *ngFor="let driver of activeDrivers">
+    <div class="driver-card" *ngFor="let driver of drivers">
       <div>
-        <p class="driver-name">{{ driver.name }}</p>
-        <p class="driver-location">Location: {{ driver.location }}</p>
+        <p class="driver-name">{{ driver.employeeName }}</p>
+        <p class="driver-location">Location: {{ driver.address }}</p>
       </div>
     </div>
   </div>
