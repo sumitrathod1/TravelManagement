@@ -16,7 +16,7 @@ export class DriverComponent {
   };
 
   currentBooking = {
-    driverImg: 'assets/driver.jpg', // Replace with actual image path or API
+    driverImg: 'assets/driver.jpg',
     customerName: 'Sarah Johnson',
     rating: 4.9,
     fare: 18.5,

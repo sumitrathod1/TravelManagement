@@ -11,20 +11,24 @@
           <div class="mb-1">
             <i class="bi bi-truck fs-4 text-success"></i>
           </div>
-          <h6 class="card-title">Total Vehicles</h6>
+          <h3 class="card-title fw-bold">Total Vehicles</h3>
           <h4 class="card-text fw-bold">4</h4>
         </div>
       </div>
     </div>
 
     <!-- Active Vehicles -->
-    <div class="col-6 col-md-3" (click)="expexnseForm()">
+    <div
+      class="col-6 col-md-3"
+      routerLink="/vehicle-statistics"
+      [state]="{ expenses: allExpenses }"
+    >
       <div class="card p-2" style="min-height: 80px">
         <div class="card-body text-center">
           <div class="mb-1">
             <i class="bi bi-check-circle fs-4 text-success"></i>
           </div>
-          <h6 class="card-title">documents</h6>
+          <h3 class="card-title fw-bold">Statistics</h3>
           <h4 class="card-text fw-bold">18</h4>
         </div>
       </div>

@@ -1,13 +1,11 @@
-.action{
-    button{
-      flex: 1;
-    }
-   }
+.action {
+  button {
+    flex: 1;
+  }
+}
 
-   .row{
-
-   
-    mat-form-field{
-     width: 100%;
-    }
-   }
+.row {
+  mat-form-field {
+    width: 100%;
+  }
+}

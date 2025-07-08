@@ -1,0 +1,87 @@
+<div class="container py-3">
+  <div class="row g-3">
+    <div class="col-12">
+      <div class="card p-3 mb-3 shadow-sm monthly-revenue">
+        <div class="d-flex justify-content-between align-items-center">
+          <div>
+            <div class="text-muted small mb-1">
+              <i class="bi bi-currency-rupee"></i> Monthly Earnings
+              <span class="badge bg-light-success ms-2">+12.5%</span>
+            </div>
+            <div class="fs-2 fw-bold">₹{{ bookingRevenueStats["month"] }}</div>
+            <div class="text-muted">{{ stats.monthLabel }}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-6">
+      <div class="card p-3 mb-3 shadow-sm text-center week-day">
+        <div class="text-muted small mb-1">
+          <i class="bi bi-currency-rupee"></i> Weekly
+        </div>
+        <div class="fs-4 fw-bold">₹{{ bookingRevenueStats["week"] }}</div>
+        <div class="text-muted">{{ stats.weekLabel }}</div>
+      </div>
+    </div>
+    <div class="col-6">
+      <div class="card p-3 mb-3 shadow-sm text-center week-day">
+        <div class="text-muted small mb-1">
+          <i class="bi bi-currency-rupee"></i> Daily
+        </div>
+        <div class="fs-4 fw-bold">₹{{ bookingRevenueStats["today"] }}</div>
+        <div class="text-muted">{{ stats.dayLabel }}</div>
+      </div>
+    </div>
+    <div class="col-12">
+      <div class="card p-3 mb-3 shadow-sm AverageBooking">
+        <div class="text-muted mb-2">
+          <i class="bi bi-currency-rupee"></i> Average Booking Amount
+        </div>
+        <div class="row text-center">
+          <div class="col-6 col-md-3 mb-2">
+            <div class="fw-bold">₹{{ bookingsAvgStats["dailyAvg"] }}</div>
+            <div class="text-muted small">Daily Avg</div>
+          </div>
+          <div class="col-6 col-md-3 mb-2">
+            <div class="fw-bold">₹{{ bookingsAvgStats["weeklyAvg"] }}</div>
+            <div class="text-muted small">Weekly Avg</div>
+          </div>
+          <div class="col-6 col-md-3 mb-2">
+            <div class="fw-bold">₹{{ bookingsAvgStats["monthlyAvg"] }}</div>
+            <div class="text-muted small">Monthly Avg</div>
+          </div>
+          <div class="col-6 col-md-3 mb-2">
+            <div class="fw-bold">₹{{ bookingsAvgStats["yearlyAvg"] }}</div>
+            <div class="text-muted small">Yearly Avg</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-12">
+      <div class="card p-3 mb-3 shadow-sm linechart">
+        <div class="text-muted mb-2">
+          <i class="bi bi-graph-up"></i> Earnings Trend
+        </div>
+        <canvas
+          baseChart
+          [data]="lineChartData"
+          [type]="lineChartType"
+          [options]="lineChartOptions"
+        ></canvas>
+      </div>
+    </div>
+    <div class="col-12">
+      <div class="card p-3 mb-3 shadow-sm barchart">
+        <div class="text-muted mb-2">
+          <i class="bi bi-pie-chart"></i> Booking Distribution
+        </div>
+        <canvas
+          baseChart
+          [data]="pieChartData"
+          [type]="pieChartType"
+          [options]="pieChartOptions"
+        ></canvas>
+      </div>
+    </div>
+  </div>
+</div>

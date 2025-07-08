@@ -27,6 +27,7 @@ import { provideNativeDateAdapter } from '@angular/material/core';
 import { BookingService } from '../../services/booking.service';
 import { EmployeeService } from '../../services/employee.service';
 import { VehicleService } from '../../services/vehicle.service';
+import { AgentService } from '../../services/agent.service';
 
 @Component({
   selector: 'app-booking-form',
@@ -49,7 +50,7 @@ import { VehicleService } from '../../services/vehicle.service';
   styleUrl: './booking-form.component.css',
 })
 export class BookingFormComponent {
-  agentTypes = ['AB', 'olen', 'kiran'];
+  //agentTypes = ['AB', 'olen', 'kiran'];
   BookingType = [
     'AirportPickup',
     'AirportDrop',
@@ -65,6 +66,8 @@ export class BookingFormComponent {
 
   vehcilesType: any = [];
 
+  agentTypes: any = [];
+
   times: string[] = [];
 
   constructor(
@@ -72,6 +75,7 @@ export class BookingFormComponent {
     private _bookingServicea: BookingService,
     private _employeeService: EmployeeService,
     private _vechileService: VehicleService,
+    private _agentService: AgentService,
     /*private _dialogRef:MatDialogRef<BookingComponent>*/ private _dilog: Dialog,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {
@@ -102,6 +106,18 @@ export class BookingFormComponent {
     this.generateTimeSlots();
     this.loadEmployees();
     this.loadVehciles();
+    this.loadAgents();
+  }
+
+  loadAgents() {
+    this._agentService.getAllAgents().subscribe({
+      next: (agent: any) => {
+        this.agentTypes = agent;
+      },
+      error: (err: any) => {
+        console.error('Error fetching agents:', err);
+      },
+    });
   }
 
   loadEmployees() {

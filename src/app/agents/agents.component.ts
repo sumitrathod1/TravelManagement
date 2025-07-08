@@ -13,6 +13,16 @@ import { AgentService } from '../services/agent.service';
 })
 export class AgentsComponent {
   agents: any = [];
+
+  totalRevenue: number = 0;
+  pendingAmount: number = 0;
+
+  get totalRevenueAmount() {
+    return this.totalRevenue;
+  }
+  get totalPendingAmount() {
+    return this.pendingAmount;
+  }
   constructor(private _dilog: MatDialog, private _agents: AgentService) {}
   onAgentClick() {
     this._dilog.open(AgentFormComponent);
@@ -29,6 +39,14 @@ export class AgentsComponent {
     this._agents.getAllAgents().subscribe({
       next: (data) => {
         this.agents = data;
+        this.totalRevenue = data.reduce(
+          (sum: number, agent: any) => sum + (agent.earned || 0),
+          0
+        );
+        this.pendingAmount = data.reduce(
+          (sum: number, agent: any) => sum + (agent.pending || 0),
+          0
+        );
         console.log('Agents fetched successfully:', data);
       },
       error: (error) => {

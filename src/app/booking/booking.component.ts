@@ -2,29 +2,19 @@ import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
-  SimpleChanges,
 } from '@angular/core';
 import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import {
-  FormBuilder,
-  FormControl,
-  FormGroup,
-  FormsModule,
-  ReactiveFormsModule,
-  Validators,
-} from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
-import { BookingListComponent } from './booking-list/booking-list.component';
-import { CalendarComponent } from '../calendar/calendar.component';
 import { ChartConfiguration, ChartOptions, ChartType } from 'chart.js';
 import { NgChartsModule } from 'ng2-charts';
 import { BookingService } from '../services/booking.service';
@@ -210,7 +200,24 @@ export class BookingComponent {
   pieChartOptions: any = {
     responsive: true,
     plugins: {
-      legend: { position: 'bottom' },
+      legend: {
+        position: 'bottom',
+        labels: {
+          generateLabels: (chart: any) => {
+            const data = chart.data;
+            return data.labels.map((label: string, i: number) => {
+              const value = data.datasets[0].data[i];
+              const backgroundColor = data.datasets[0].backgroundColor[i];
+              return {
+                text: `${label}: ${value}`,
+                fillStyle: backgroundColor,
+                strokeStyle: backgroundColor,
+                index: i,
+              };
+            });
+          },
+        },
+      },
       tooltip: {
         enabled: true,
         mode: 'nearest',

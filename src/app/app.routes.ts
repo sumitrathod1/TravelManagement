@@ -7,6 +7,11 @@ export const routes: Routes = [
       import('./home/home.component').then((m) => m.HomeComponent),
   },
   {
+    path: 'login',
+    loadComponent: () =>
+      import('./login/login.component').then((m) => m.LoginComponent),
+  },
+  {
     path: 'vehicle',
     loadComponent: () =>
       import('./vehicle/vehicle.component').then((m) => m.VehicleComponent),
@@ -23,6 +28,13 @@ export const routes: Routes = [
     loadComponent: () =>
       import('./vehicle/vehicle-card/vehicle-card.component').then(
         (m) => m.VehicleCardComponent
+      ),
+  },
+  {
+    path: 'vehicle-statistics',
+    loadComponent: () =>
+      import('./vehicle/vehicle-statistics/vehicle-statistics.component').then(
+        (m) => m.VehicleStatisticsComponent
       ),
   },
   {
@@ -75,5 +87,12 @@ export const routes: Routes = [
     path: 'drver',
     loadComponent: () =>
       import('./driver/driver.component').then((m) => m.DriverComponent),
+  },
+  {
+    path: 'earnings',
+    loadComponent: () =>
+      import('./booking/earnings/earnings.component').then(
+        (m) => m.EarningsComponent
+      ),
   },
 ];

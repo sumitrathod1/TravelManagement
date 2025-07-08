@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { CommonModule } from '@angular/common';
 import { MatDialog } from '@angular/material/dialog';
-import { DocumentFormComponent } from './document-form/document-form.component';
 import { ExpenseFormComponent } from './expense-form/expense-form.component';
 import { MaintenanceFormComponent } from './maintenance-form/maintenance-form.component';
 import { RouterModule } from '@angular/router';
@@ -17,8 +16,16 @@ import { VehicleService } from '../services/vehicle.service';
 })
 export class VehicleComponent {
   vehicleDocuments: any = [];
-  allExpenses: any = [];
+  expenses: any = [];
   vehicleMaintenances: any = [];
+
+  totlalMaintenanceCost: number = 0;
+  totalExpenseCost: number = 0;
+
+  //allExpenses = this.totalExpenseCost + this.totlalMaintenanceCost;
+  get allExpenses() {
+    return this.totalExpenseCost + this.totlalMaintenanceCost;
+  }
   constructor(
     private _dilog: MatDialog,
     private _vehicleService: VehicleService
@@ -58,7 +65,14 @@ export class VehicleComponent {
     this._vehicleService.getAllExpences().subscribe({
       next: (data) => {
         console.log('Expenses fetched successfully:', data);
-        this.allExpenses = Array.isArray(data) ? data : [];
+        this.expenses = Array.isArray(data) ? data : [];
+        this.totalExpenseCost = this.expenses.reduce(
+          (total: number, exp: any) => {
+            return total + (exp.amount || 0);
+          },
+          0
+        );
+        console.log('Total expense cost:', this.totalExpenseCost);
       },
       error: (error) => {
         console.error('Error loading expenses:', error);
@@ -69,7 +83,15 @@ export class VehicleComponent {
   loadMaintenance() {
     this._vehicleService.getAllMaintenances().subscribe({
       next: (data) => {
+        console.log('Vehicle maintenances fetched successfully:', data);
         this.vehicleMaintenances = Array.isArray(data) ? data : [];
+        this.totlalMaintenanceCost = this.vehicleMaintenances.reduce(
+          (total: number, maintenance: any) => {
+            return total + (maintenance.cost || 0);
+          },
+          0
+        );
+        console.log('Total maintenance cost:', this.totlalMaintenanceCost);
       },
       error: (err) => {
         console.error('Error loading expenses:', err);
@@ -245,7 +267,7 @@ export class VehicleComponent {
     return this.vehicleDocuments.slice(0, 4);
   }
   get top4Expenses() {
-    return this.allExpenses.slice(0, 4);
+    return this.expenses.slice(0, 4);
   }
 
   get top4Maintenances() {

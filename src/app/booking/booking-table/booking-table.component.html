@@ -75,31 +75,6 @@
     </div>
   </div>
 
-  <!-- <div class="booking-card" *ngFor="let booking of bookings">
-    <div class="d-flex">
-      <div class="icon-box me-2" [ngStyle]="{ backgroundColor: booking.color }">
-        <i class="bi bi-{{ booking.icon }} text-white"></i>
-      </div>
-      <div class="flex-grow-1">
-        <div class="d-flex justify-content-between">
-          <div>
-            <div class="fw-semibold">{{ booking.title }}</div>
-            <small class="text-muted">{{ booking.subTitle }}</small>
-          </div>
-          <span class="badge" [ngClass]="booking.statusClass">{{
-            booking.status
-          }}</span>
-        </div>
-
-        <div class="mt-2 small">
-          <div *ngFor="let detail of booking.details">{{ detail }}</div>
-        </div>
-      </div>
-    </div>
-    <div class="text-end fw-semibold mt-2">₹{{ booking.amount }}</div>
-  </div>
-</div> -->
-
   <div *ngFor="let booking of bookings" class="booking-card">
     <div class="booking-left">
       <!-- <div class="icon-box">
@@ -136,6 +111,7 @@
         booking.status
       }}</span>
       <div class="price">{{ booking.amount }}</div>
+      <div>{{ booking.vehicle.vehicleName }}</div>
     </div>
   </div>
 </div>
