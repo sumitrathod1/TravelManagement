@@ -6,15 +6,25 @@
     <h2>Welcome Back</h2>
     <p>Sign in to continue your journey</p>
 
-    <form>
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
       <div class="form-group">
         <i class="bi bi-person"></i>
-        <input type="text" placeholder="User ID" required />
+        <input
+          type="text"
+          formControlName="username"
+          placeholder="User ID"
+          required
+        />
       </div>
 
       <div class="form-group">
         <i class="bi bi-lock"></i>
-        <input type="password" placeholder="Password" required />
+        <input
+          type="password"
+          formControlName="password"
+          placeholder="Password"
+          required
+        />
       </div>
 
       <div class="forgot-password">
@@ -26,11 +36,11 @@
       </button>
     </form>
 
-    <div class="social-login">
+    <!-- <div class="social-login">
       <button><i class="bi bi-google"></i> Google</button>
       <button><i class="bi bi-facebook"></i> Facebook</button>
-    </div>
+    </div> -->
 
-    <p class="signup-link">Don't have an account? <a>Sign up</a></p>
+    <!-- <p class="signup-link">Don't have an account? <a>Sign up</a></p> -->
   </div>
 </div>

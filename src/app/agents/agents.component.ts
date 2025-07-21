@@ -3,11 +3,13 @@ import { MatDialog } from '@angular/material/dialog';
 import { AgentFormComponent } from './agent-form/agent-form.component';
 import { CommonModule } from '@angular/common';
 import { AgentService } from '../services/agent.service';
+import { FormsModule } from '@angular/forms';
+import { ViewChild, ElementRef } from '@angular/core';
 
 @Component({
   selector: 'app-agents',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, FormsModule],
   templateUrl: './agents.component.html',
   styleUrl: './agents.component.css',
 })
@@ -53,5 +55,37 @@ export class AgentsComponent {
         console.error('Error fetching agents:', error);
       },
     });
+  }
+  @ViewChild('paymentModal', { static: false }) paymentModal!: ElementRef;
+
+  paymentData = {
+    agentId: 0,
+    totalPaidAmount: 0,
+  };
+
+  openPaymentModal(agentId: number) {
+    this.paymentData.agentId = agentId;
+
+    const modalElement = this.paymentModal.nativeElement;
+    const modal =
+      (window as any).bootstrap.Modal.getInstance(modalElement) ||
+      new (window as any).bootstrap.Modal(modalElement);
+    modal.show();
+  }
+
+  submitPayment() {
+    console.log('clicked');
+    this._agents.addPayment(this.paymentData).subscribe((res) => {
+      const modalElement = this.paymentModal.nativeElement;
+      const modal =
+        (window as any).bootstrap.Modal.getInstance(modalElement) ||
+        new (window as any).bootstrap.Modal(modalElement);
+      modal.hide();
+      this.getAllAgents();
+    });
+  }
+
+  addAgent() {
+    this._dilog.open(AgentFormComponent);
   }
 }

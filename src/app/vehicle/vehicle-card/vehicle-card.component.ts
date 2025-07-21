@@ -1,5 +1,9 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { VehicleService } from '../../services/vehicle.service';
+import { MatDialog } from '@angular/material/dialog';
+import { MaintenanceFormComponent } from '../maintenance-form/maintenance-form.component';
+import { ExpenseFormComponent } from '../expense-form/expense-form.component';
 
 @Component({
   selector: 'app-vehicle-card',
@@ -9,48 +13,34 @@ import { CommonModule } from '@angular/common';
   styleUrl: './vehicle-card.component.css',
 })
 export class VehicleCardComponent {
-  vehicleTypes = [
-    {
-      Name: 'Maruti',
-      Type: 'sedan',
-      Year: 2020,
-      nextservice: '2023-05-01',
-      Next_Emi: '2023-06-01',
-    },
-    {
-      Name: 'Hyundai',
-      Type: 'hatchback',
-      Year: 2021,
-      nextservice: '2023-06-01',
-      Next_Emi: '2023-07-01',
-    },
-    {
-      Name: 'Honda',
-      Type: 'SUV',
-      Year: 2019,
-      nextservice: '2023-04-01',
-      Next_Emi: '2023-05-01',
-    },
-    {
-      Name: 'Toyota',
-      Type: 'sedan',
-      Year: 2022,
-      nextservice: '2023-07-01',
-      Next_Emi: '2023-08-01',
-    },
-    {
-      Name: 'Ford',
-      Type: 'hatchback',
-      Year: 2018,
-      nextservice: '2023-03-01',
-      Next_Emi: '2023-04-01',
-    },
-    {
-      Name: 'Nissan',
-      Type: 'SUV',
-      Year: 2020,
-      nextservice: '2023-05-15',
-      Next_Emi: '2023-06-15',
-    },
-  ];
+  vehicleList: any[] = [];
+  constructor(
+    private _vechicleService: VehicleService,
+    private _dialog: MatDialog
+  ) {}
+
+  ngOnInit() {
+    this.loadVehicles();
+  }
+
+  loadVehicles() {
+    this._vechicleService.getAllVehicles().subscribe({
+      next: (data: any) => {
+        this.vehicleList = data;
+      },
+      error: (err) => {
+        console.error('Error fetching vehicle data:', err);
+      },
+    });
+  }
+
+  maintenance() {
+    this._dialog.open(MaintenanceFormComponent);
+  }
+  expence() {
+    this._dialog.open(ExpenseFormComponent);
+  }
+  documentShedule() {
+    this._dialog.open(MaintenanceFormComponent);
+  }
 }

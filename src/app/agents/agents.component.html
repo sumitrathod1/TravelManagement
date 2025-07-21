@@ -5,7 +5,7 @@
   <div class="dashboard-title">
     <i class="bi bi-people-fill"></i> Agent Dashboard
   </div>
-  <button class="add-btn">+ Add</button>
+  <button class="add-btn" (click)="addAgent()">+ Add</button>
 </div>
 <div class="agent-dashboard">
   <div class="summary-grid">
@@ -40,15 +40,6 @@
     </div>
   </div>
 
-  <!-- Filters -->
-  <div class="mb-3">
-    <div class="btn-group w-100" role="group">
-      <button class="btn btn-outline-secondary">All</button>
-      <button class="btn btn-outline-success">Confirmed</button>
-      <button class="btn btn-outline-warning">Pending</button>
-    </div>
-  </div>
-
   <div class="agent-card" *ngFor="let agent of agents">
     <div class="agent-header">
       <div class="agent-info">
@@ -69,8 +60,32 @@
     </div>
 
     <div class="agent-actions">
-      <button class="view-details-btn">👁 View Details</button>
+      <button
+        class="view-details-btn"
+        (click)="openPaymentModal(agent.agentId)"
+      >
+        Add Payment
+      </button>
       <div class="call-icon">📞</div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="paymentModal" tabindex="-1" #paymentModal>
+  <div class="modal-dialog">
+    <div class="modal-content p-3">
+      <h5>Add Payment</h5>
+      <form (ngSubmit)="submitPayment()">
+        <input type="hidden" [(ngModel)]="paymentData.agentId" name="agentId" />
+        <input
+          type="number"
+          [(ngModel)]="paymentData.totalPaidAmount"
+          name="amount"
+          required
+          class="form-control"
+        />
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
     </div>
   </div>
 </div>

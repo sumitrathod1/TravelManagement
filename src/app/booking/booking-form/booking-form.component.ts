@@ -60,6 +60,8 @@ export class BookingFormComponent {
     'Shuttle',
     'Notspecified',
   ];
+  bookingForm!: FormGroup;
+
   paytypes = ['Admin', 'ExternalEmployee'];
 
   driverType: any = [];
@@ -176,8 +178,6 @@ export class BookingFormComponent {
     'Panjim',
   ];
   errorMessage = '';
-
-  bookingForm!: FormGroup;
 
   onFormSubmit() {
     if (this.bookingForm.valid) {

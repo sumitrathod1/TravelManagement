@@ -62,6 +62,8 @@ export class AgentFormComponent {
         console.error('Error adding agent', err);
       },
     });
+    this._dialog.closeAll();
+    this.agentForm.reset();
   }
   clossAgent() {
     this._dialog.closeAll();

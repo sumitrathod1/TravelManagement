@@ -1,30 +1,41 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-4 mb-4" *ngFor="let vehicle of vehicleTypes">
+    <div class="col-md-4 mb-4" *ngFor="let vehicle of vehicleList">
       <div class="card" style="width: 100%">
         <div class="card-body">
           <div class="row mb-2">
-            <div class="col-6 text-start fw-bold">{{ vehicle.Name }}</div>
-            <div class="col-6 text-end">{{ vehicle.Type }}</div>
+            <div class="col-6 text-start fw-bold">
+              {{ vehicle.vehicleName }}
+            </div>
+            <div class="col-6 text-end">{{ vehicle.vehicleType }}</div>
           </div>
           <div class="row mb-2">
             <div class="col-6 text-start fw-bold">Year</div>
-            <div class="col-6 text-end">{{ vehicle.Year }}</div>
+            <div class="col-6 text-end">{{ vehicle.registrationDate }}</div>
           </div>
           <div class="row mb-2">
-            <div class="col-6 text-start fw-bold">Next Service date</div>
-            <div class="col-6 text-end">{{ vehicle.nextservice }}</div>
+            <div class="col-6 text-start fw-bold">Seats</div>
+            <div class="col-6 text-end">{{ vehicle.seatingcapacity }}</div>
           </div>
           <div class="row mb-2">
-            <div class="col-6 text-start fw-bold">Next EMI</div>
-            <div class="col-6 text-end">{{ vehicle.Next_Emi }}</div>
+            <div class="col-6 text-start fw-bold">Number</div>
+            <div class="col-6 text-end">{{ vehicle.vehicleNumber }}</div>
           </div>
           <div class="row mt-3">
-            <div class="col-6">
-              <button class="btn btn-success w-100">View Doc.</button>
+            <div class="col-4">
+              <button class="btn btn-success w-100" (click)="maintenance()">
+                <i class="bi bi-wrench-adjustable"></i>
+              </button>
             </div>
-            <div class="col-6">
-              <button class="btn btn-primary w-100">Edit</button>
+            <div class="col-4">
+              <button class="btn btn-danger w-100" (click)="expence()">
+                <i class="bi bi-cash-stack"></i>
+              </button>
+            </div>
+            <div class="col-4">
+              <button class="btn btn-primary w-100" (click)="documentShedule()">
+                <i class="bi bi-receipt-cutoff"></i>
+              </button>
             </div>
           </div>
         </div>
