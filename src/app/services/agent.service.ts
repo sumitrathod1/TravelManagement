@@ -6,7 +6,9 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class AgentService {
-  private baseUrl: string = 'https://localhost:7183/api/TravelAgents/';
+  // private baseUrl: string = 'https://localhost:7183/api/TravelAgents/';
+  private baseUrl: string =
+    'https://travelmanagement-backend.onrender.com/api/TravelAgents/';
 
   constructor(private _http: HttpClient) {}
 

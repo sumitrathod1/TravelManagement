@@ -7,7 +7,9 @@ import { shareReplay } from 'rxjs/operators';
   providedIn: 'root',
 })
 export class BookingService {
-  private baseUrl: string = 'https://localhost:7183/api/Booking/';
+  //private baseUrl: string = 'https://localhost:7183/api/Booking/';
+  private baseUrl: string =
+    'https://travelmanagement-backend.onrender.com/api/Booking/';
 
   //private baseUrl: string = 'http://192.168.133.17:5006/api/Booking/';
   private bookingsCache$?: Observable<any>;

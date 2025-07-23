@@ -5,8 +5,9 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class VehicleService {
-  baseUrl: string = 'https://localhost:7183/api/Vehicle/';
-  //baseUrl: string = 'http://192.168.133.17:5006/api/Vehicle/';
+  //baseUrl: string = 'https://localhost:7183/api/Vehicle/';
+  private baseUrl: string =
+    'https://travelmanagement-backend.onrender.com/api/Vehicle/';
 
   constructor(private _http: HttpClient) {}
 
