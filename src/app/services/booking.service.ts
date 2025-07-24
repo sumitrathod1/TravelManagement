@@ -39,7 +39,7 @@ export class BookingService {
       externalEmployeeNumber: 0,
       travelAgentName: booking.agent ?? 0,
       customerWillPay: booking.customerPay ?? 0,
-      ownerWillPay: booking.ownerPay,
+      ownerWillPay: booking.ownerPay ? +booking.ownerPay : 0,
       // bookingDate: booking.travelDate
       //   ? new Date(booking.travelDate).toISOString().split('T')[0]
       //   : null,
