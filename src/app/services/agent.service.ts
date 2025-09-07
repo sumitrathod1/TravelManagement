@@ -6,7 +6,8 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class AgentService {
-  baseUrl: string = 'http://ezygoa.icu/api/TravelAgents/';
+  baseUrl: string =
+    'https://ezytravel-axengwe4fzgtehg0.centralus-01.azurewebsites.net/api/TravelAgents/';
 
   constructor(private _http: HttpClient) {}
 

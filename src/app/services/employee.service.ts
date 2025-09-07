@@ -8,7 +8,8 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 })
 export class EmployeeService {
   //private baseUrl: string = 'https://localhost:7183/api/User/';
-  baseUrl: string = 'http://ezygoa.icu/api/User/';
+  baseUrl: string =
+    'https://ezytravel-axengwe4fzgtehg0.centralus-01.azurewebsites.net/api/User/';
 
   private employeeCountSubject = new BehaviorSubject<number>(0);
   employeCount$ = this.employeeCountSubject.asObservable();

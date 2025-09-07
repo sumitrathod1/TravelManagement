@@ -10,7 +10,8 @@ export class BookingService {
   //private baseUrl: string = 'https://localhost:7183/api/Booking/';
   //private baseUrl: string = 'https://travelmanagement-backend.onrender.com/api/Booking/';
 
-  baseUrl: string = 'http://ezygoa.icu/api/Booking/';
+  baseUrl: string =
+    'https://ezytravel-axengwe4fzgtehg0.centralus-01.azurewebsites.net/api/Booking/';
   private bookingsCache$?: Observable<any>;
 
   private bookingCountSubject = new BehaviorSubject<number>(0);
