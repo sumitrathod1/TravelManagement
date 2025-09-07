@@ -8,8 +8,7 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 })
 export class EmployeeService {
   //private baseUrl: string = 'https://localhost:7183/api/User/';
-  private baseUrl: string =
-    'https://travelmanagement-backend.onrender.com/api/User/';
+  baseUrl: string = 'http://ezygoa.icu/api/User/';
 
   private employeeCountSubject = new BehaviorSubject<number>(0);
   employeCount$ = this.employeeCountSubject.asObservable();
@@ -71,5 +70,34 @@ export class EmployeeService {
     const token = this.getToken()!;
     console.log(jwthlper.decodeToken(token));
     return jwthlper.decodeToken(token);
+  }
+
+  getRoleFromToken(): string | null {
+    const token = localStorage.getItem('token');
+    if (!token) return null;
+    const decoded = new JwtHelperService().decodeToken(token);
+    return (
+      decoded['http://schemas.microsoft.com/ws/2008/06/identity/claims/role'] ||
+      null
+    );
+  }
+
+  getUserIdFromToken(): string | null {
+    const decoded = this.decodeToken();
+    return decoded
+      ? decoded[
+          'http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier'
+        ] || null
+      : null;
+  }
+  getEmployeeBookings(): Observable<any> {
+    // const id = this.getUserIdFromToken();
+    // const dumyID = 2;
+    // if (!id) throw new Error('User ID not found in token');
+    return this._http.get(`${this.baseUrl}ViewBookings`, {
+      params: { id: 2 },
+    });
+
+    //return this._http.get(`${this.baseUrl}ViewBookings`, { params: { id } });
   }
 }

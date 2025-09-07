@@ -3,11 +3,13 @@ import { CommonModule } from '@angular/common';
 import { MatDialog } from '@angular/material/dialog';
 import { BookingFormComponent } from '../booking-form/booking-form.component';
 import { BookingService } from '../../services/booking.service';
+import { EmailBookingComponent } from '../email-booking/email-booking.component';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-booking-table',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterModule],
   templateUrl: './booking-table.component.html',
   styleUrl: './booking-table.component.css',
 })
@@ -45,47 +47,10 @@ export class BookingTableComponent {
       data: booking,
     });
   }
-
-  bookingsss = [
-    {
-      icon: 'directions_car',
-      title: 'Rental Car',
-      location: 'BMW X3 - Premium',
-      pickupDate: 'Dec 21, 2024',
-      dropoffDate: 'Dec 25, 2024',
-      duration: '4 Days',
-      status: 'Confirmed',
-      price: '$320',
-    },
-    {
-      icon: 'directions_car',
-      title: 'Rental Car',
-      location: 'BMW X3 - Premium',
-      pickupDate: 'Dec 21, 2024',
-      dropoffDate: 'Dec 25, 2024',
-      duration: '4 Days',
-      status: 'Confirmed',
-      price: '$320',
-    },
-    {
-      icon: 'directions_car',
-      title: 'Rental Car',
-      location: 'BMW X3 - Premium',
-      pickupDate: 'Dec 21, 2024',
-      dropoffDate: 'Dec 25, 2024',
-      duration: '4 Days',
-      status: 'Confirmed',
-      price: '$320',
-    },
-    {
-      icon: 'directions_car',
-      title: 'Rental Car',
-      location: 'BMW X3 - Premium',
-      pickupDate: 'Dec 21, 2024',
-      dropoffDate: 'Dec 25, 2024',
-      duration: '4 Days',
-      status: 'Confirmed',
-      price: '$320',
-    },
-  ];
+  editBooking(booking: any) {
+    console.log('Edit booking:', booking);
+    this._dialog.open(BookingFormComponent, {
+      data: booking,
+    });
+  }
 }

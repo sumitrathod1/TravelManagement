@@ -1,48 +1,99 @@
-.chart-card {
-  background: #ffffff;
-  border-radius: 12px;
-  transition: transform 0.3s ease, box-shadow 0.5s ease;
-  cursor: pointer;
+body,
+html {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  min-height: 100vh;
+  font-family: "Poppins", "Inter", "Segoe UI", sans-serif;
+  background: radial-gradient(
+      circle at 30% 30%,
+      rgba(99, 102, 241, 0.75),
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 80% 65%,
+      rgba(255, 99, 132, 0.75),
+      transparent 45%
+    ),
+    linear-gradient(135deg, #5f72be, #9b23ea);
+  background-blend-mode: screen;
+  animation: backgroundGlow 12s ease-in-out infinite alternate;
 }
 
-.chart-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 20px rgba(99, 102, 241, 0.2);
-}
-
-.shadow-effect {
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-canvas {
-  max-height: 300px;
-}
-
-.dashboard-container {
-  max-width: 1100px;
-  margin: 32px auto;
-  padding: 16px;
-  background: #fff;
-  border-radius: 16px;
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.07);
-}
-
-.loader-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 200px;
-}
-.spinner {
-  border: 6px solid #eee;
-  border-top: 6px solid #6366f1;
-  border-radius: 50%;
-  width: 48px;
-  height: 48px;
-  animation: spin 1s linear infinite;
-}
-@keyframes spin {
+@keyframes backgroundGlow {
+  0%,
   100% {
-    transform: rotate(360deg);
+    background-position: 30% 30%, 80% 65%;
+  }
+  50% {
+    background-position: 40% 40%, 90% 70%;
+  }
+}
+
+/* Dashboard Container with subtle shadow and glass effect */
+.dashboard-container {
+  max-width: 460px;
+  margin: 40px auto;
+  padding: 18px 14px;
+  background: rgba(255 255 255 / 0.92);
+  border-radius: 32px;
+  box-shadow: 0 8px 24px rgba(99, 102, 241, 0.4),
+    0 0 50px rgba(99, 102, 241, 0.19);
+  backdrop-filter: blur(12px);
+}
+
+/* Card with glowing effect and soft 3D shadow */
+.card {
+  background: linear-gradient(145deg, #ffffff, #dce5ff);
+  border-radius: 20px;
+  padding: 22px 16px;
+  box-shadow: 8px 8px 16px rgba(0, 0, 0, 0.1),
+    -8px -8px 20px rgba(255, 255, 255, 0.9);
+  transition: box-shadow 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  border: 1.2px solid transparent;
+  position: relative;
+  overflow: hidden;
+}
+.card:hover {
+  box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.16),
+    -10px -10px 30px rgba(255, 255, 255, 0.7);
+  border-color: #6355ff;
+}
+
+/* Titles & Icons */
+.card-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #3c3c72;
+  margin-bottom: 9px;
+  text-shadow: 0 2px 6px rgba(155, 35, 234, 0.18);
+}
+
+.card-text {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: #4a4a8e;
+  text-shadow: 0 2px 8px rgba(99, 102, 241, 0.24);
+}
+
+/* Blue Icons */
+.card-icon {
+  font-size: 2rem;
+  color: #6355ff;
+  filter: drop-shadow(0 0 6px #8058ffb5);
+  margin-bottom: 12px;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .dashboard-container {
+    margin: 0;
+    border-radius: 18px;
+    padding: 14px 12px;
+  }
+  .card {
+    border-radius: 16px;
+    padding: 18px 12px;
   }
 }

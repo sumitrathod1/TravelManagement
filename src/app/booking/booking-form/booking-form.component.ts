@@ -1,10 +1,4 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  EventEmitter,
-  Inject,
-  Output,
-} from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -50,7 +44,6 @@ import { AgentService } from '../../services/agent.service';
   styleUrl: './booking-form.component.css',
 })
 export class BookingFormComponent {
-  //agentTypes = ['AB', 'olen', 'kiran'];
   BookingType = [
     'AirportPickup',
     'AirportDrop',
@@ -71,6 +64,7 @@ export class BookingFormComponent {
   agentTypes: any = [];
 
   times: string[] = [];
+  isEditMode = false;
 
   constructor(
     private _fb: FormBuilder,
@@ -82,24 +76,26 @@ export class BookingFormComponent {
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {
     this.bookingForm = _fb.group({
-      customerName: '',
-      customerNumber: '',
-      Pax: '',
-      From: '',
-      to: '',
-      travelDate: '',
-      travelTime: '',
-      driver: '',
-      vehcile: '',
-      amount: '',
-      bookingType: '',
-      payment: '',
-      ownerPay: '',
-      customerPay: '',
-      agent: '',
+      bookingId: data?.bookingId ?? null,
+      customerName: data?.customer?.customerName ?? '',
+      customerNumber: data?.customer?.customerNumber ?? '',
+      pax: data?.pax ?? '',
+      from: Array.isArray(data?.from) ? data.from[0] : data?.from ?? '',
+      to: Array.isArray(data?.to) ? data.to[0] : data?.to ?? '',
+      travelDate: data?.travelDate ?? '',
+      travelTime: data?.traveltime ?? '',
+      driver: data?.userid ?? '',
+      vehicle: data?.vehicleId ?? '',
+      amount: data?.amount ?? '',
+      bookingType: data?.bookingType ?? '',
+      payment: data?.payment ?? '',
+      ownerPay: data?.ownerPay ?? '',
+      customerPay: data?.customerPay ?? '',
+      agent: data?.travelAgentId ?? '',
     });
 
     if (data) {
+      this.isEditMode = true;
       this.bookingForm.patchValue(data);
     }
   }
@@ -166,7 +162,7 @@ export class BookingFormComponent {
     'Airport',
     'Railway Station',
     'Mopa Airport',
-    'Vaso',
+    'Vasco',
     'Calangute',
     'Baga',
     'Candolim',
@@ -176,6 +172,7 @@ export class BookingFormComponent {
     'Arpora',
     'Nerul',
     'Panjim',
+    'Mapusa',
   ];
   errorMessage = '';
 

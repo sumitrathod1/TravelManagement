@@ -6,8 +6,7 @@ import { Injectable } from '@angular/core';
 })
 export class VehicleService {
   //baseUrl: string = 'https://localhost:7183/api/Vehicle/';
-  private baseUrl: string =
-    'https://travelmanagement-backend.onrender.com/api/Vehicle/';
+  baseUrl: string = 'http://ezygoa.icu/api/Vehicle/';
 
   constructor(private _http: HttpClient) {}
 
@@ -24,5 +23,17 @@ export class VehicleService {
   }
   getAllMaintenances() {
     return this._http.get(`${this.baseUrl}GetVehicleMaintenance`);
+  }
+
+  addMaintenance(data: any) {
+    return this._http.post(`${this.baseUrl}AddVechicleMaintenance`, data);
+  }
+
+  addExpence(data: any) {
+    return this._http.post(`${this.baseUrl}AddVehicleExpence`, data);
+  }
+
+  addDocument(data: any) {
+    return this._http.post(`${this.baseUrl}AddDocumentDetails`, data);
   }
 }

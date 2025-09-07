@@ -50,6 +50,30 @@ export const routes: Routes = [
     //canActivate: [authGuard],
   },
   {
+    path: 'vehicle-documents',
+    loadComponent: () =>
+      import('./vehicle/document-table/document-table.component').then(
+        (m) => m.DocumentTableComponent
+      ),
+    //canActivate: [authGuard],
+  },
+  {
+    path: 'expense-table',
+    loadComponent: () =>
+      import('./vehicle/expense-table/expense-table.component').then(
+        (m) => m.ExpenseTableComponent
+      ),
+    //canActivate: [authGuard],
+  },
+  {
+    path: 'maintenance-table',
+    loadComponent: () =>
+      import('./vehicle/maintenance-table/maintenance-table.component').then(
+        (m) => m.MaintenanceTableComponent
+      ),
+    //canActivate: [authGuard],
+  },
+  {
     path: 'booking',
     loadComponent: () =>
       import('./booking/booking.component').then((m) => m.BookingComponent),
@@ -104,16 +128,34 @@ export const routes: Routes = [
     //canActivate: [authGuard],
   },
   {
-    path: 'drver',
+    path: 'agent-details/:id',
+    loadComponent: () =>
+      import('./agents/agent-details/agent-details.component').then(
+        (p) => p.AgentDetailsComponent
+      ),
+    //canActivate: [authGuard],
+  },
+  {
+    path: 'driver',
     loadComponent: () =>
       import('./driver/driver.component').then((m) => m.DriverComponent),
     ///canActivate: [authGuard],
+
+    //data: { roles: ['Driver'] },
   },
   {
     path: 'earnings',
     loadComponent: () =>
       import('./booking/earnings/earnings.component').then(
         (m) => m.EarningsComponent
+      ),
+    //canActivate: [authGuard],
+  },
+  {
+    path: 'email-booking',
+    loadComponent: () =>
+      import('./booking/email-booking/email-booking.component').then(
+        (m) => m.EmailBookingComponent
       ),
     //canActivate: [authGuard],
   },

@@ -5,6 +5,8 @@ import { CommonModule } from '@angular/common';
 import { AgentService } from '../services/agent.service';
 import { FormsModule } from '@angular/forms';
 import { ViewChild, ElementRef } from '@angular/core';
+import { Router } from '@angular/router';
+import { ReportFormComponent } from './report-form/report-form.component';
 
 @Component({
   selector: 'app-agents',
@@ -25,7 +27,11 @@ export class AgentsComponent {
   get totalPendingAmount() {
     return this.pendingAmount;
   }
-  constructor(private _dilog: MatDialog, private _agents: AgentService) {}
+  constructor(
+    private route: Router,
+    private _dilog: MatDialog,
+    private _agents: AgentService
+  ) {}
   onAgentClick() {
     this._dilog.open(AgentFormComponent);
     console.log('Agent clicked');
@@ -87,5 +93,14 @@ export class AgentsComponent {
 
   addAgent() {
     this._dilog.open(AgentFormComponent);
+  }
+  viewAllBookings(agentId: number) {
+    this.route.navigate(['/agent-details', agentId]);
+  }
+
+  downloadReport(agentId: number) {
+    this._dilog.open(ReportFormComponent, {
+      data: { agentId: agentId },
+    });
   }
 }

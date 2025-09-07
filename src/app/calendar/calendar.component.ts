@@ -1,24 +1,12 @@
-import {
-  Component,
-  signal,
-  inject,
-  Input,
-  OnChanges,
-  SimpleChanges,
-} from '@angular/core';
+import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { format, getDaysInMonth, startOfMonth, getDay } from 'date-fns';
-import { MatDialog, MatDialogModule } from '@angular/material/dialog';
-import { BookingFormComponent } from '../booking/booking-form/booking-form.component';
-
-import { ViewChild } from '@angular/core';
 
 const VEHICLE_COLOR_MAP: Record<string, string> = {
   Dzire: '#00bcd4',
   Ertiga: '#f59e42',
-  Innova: '#22c55e',
-  TT20S: '#a78bfa',
-  TT15: '#6366f1',
+  Crysta: '#22c55e',
+  TT20: '#a78bfa',
+  TT17: '#6366f1',
 };
 
 @Component({
@@ -29,7 +17,6 @@ const VEHICLE_COLOR_MAP: Record<string, string> = {
   styleUrl: './calendar.component.css',
 })
 export class CalendarComponent implements OnChanges {
-  //bookings$ = signal<Booking[]>([]);
   @Input() newBookings: any[] = [];
   bookings: any[] = [];
 

@@ -1,0 +1,42 @@
+<h2 mat-dialog-title>Select Report Date Range</h2>
+
+<form [formGroup]="reportForm" (ngSubmit)="onSubmit()">
+  <mat-radio-group
+    formControlName="reportType"
+    aria-label="Report Type"
+    style="display: flex; gap: 20px; margin-bottom: 18px"
+  >
+    <mat-radio-button value="full">Full Report</mat-radio-button>
+    <mat-radio-button value="partial">Partial Report</mat-radio-button>
+  </mat-radio-group>
+
+  <div *ngIf="reportForm.get('reportType')?.value === 'partial'">
+    <mat-form-field appearance="outline" style="flex: 1">
+      <mat-label>Select from date</mat-label>
+      <input matInput [matDatepicker]="pickerFrom" formControlName="fromDate" />
+      <mat-datepicker-toggle
+        matSuffix
+        [for]="pickerFrom"
+      ></mat-datepicker-toggle>
+      <mat-datepicker #pickerFrom></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" style="flex: 1">
+      <mat-label>Select to date</mat-label>
+      <input matInput [matDatepicker]="pickerTo" formControlName="toDate" />
+      <mat-datepicker-toggle matSuffix [for]="pickerTo"></mat-datepicker-toggle>
+      <mat-datepicker #pickerTo></mat-datepicker>
+    </mat-form-field>
+  </div>
+
+  <div style="margin-top: 24px; display: flex; justify-content: center">
+    <button
+      mat-raised-button
+      color="primary"
+      type="submit"
+      [disabled]="submitDisabled()"
+    >
+      Submit
+    </button>
+  </div>
+</form>

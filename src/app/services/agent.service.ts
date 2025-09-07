@@ -6,14 +6,16 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class AgentService {
-  // private baseUrl: string = 'https://localhost:7183/api/TravelAgents/';
-  private baseUrl: string =
-    'https://travelmanagement-backend.onrender.com/api/TravelAgents/';
+  baseUrl: string = 'http://ezygoa.icu/api/TravelAgents/';
 
   constructor(private _http: HttpClient) {}
 
   public getAllAgents(): Observable<any> {
     return this._http.get(`${this.baseUrl}GetAllAgent`);
+  }
+
+  public getBookingByAgentsID(id: number): Observable<any> {
+    return this._http.get(`${this.baseUrl}${id}`);
   }
 
   public addAgetn(agent: any): Observable<any> {
@@ -24,5 +26,11 @@ export class AgentService {
   public addPayment(paymentData: any): Observable<any> {
     console.log('Payment data to be sent:', paymentData);
     return this._http.post(`${this.baseUrl}ApplyAgentPayment`, paymentData);
+  }
+
+  public downloadAgentReport(id: number, fromDateStr: any, toDateStr: any) {
+    return this._http.get(`${this.baseUrl}ExportAgentBookingsPdf/${id}`, {
+      responseType: 'blob',
+    });
   }
 }

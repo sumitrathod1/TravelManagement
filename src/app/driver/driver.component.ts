@@ -1,5 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
+import { EmployeeService } from '../services/employee.service';
+import { map } from 'rxjs';
 
 @Component({
   selector: 'app-driver',
@@ -9,38 +11,49 @@ import { Component } from '@angular/core';
   styleUrl: './driver.component.css',
 })
 export class DriverComponent {
-  stats = {
-    rides: 8,
-    earned: 124,
-    onlineHours: 6.2,
-  };
+  currentBookings: any[] = [];
+  upcomingRides: any[] = [];
 
-  currentBooking = {
-    driverImg: 'assets/driver.jpg',
-    customerName: 'Sarah Johnson',
-    rating: 4.9,
-    fare: 18.5,
-    duration: 12,
-    pickup: '123 Main Street, Downtown',
-    dropoff: '456 Oak Avenue, Uptown',
-  };
+  rides = 0;
+  constructor(private _employeService: EmployeeService) {}
 
-  upcomingRides = [
-    {
-      img: 'assets/user1.jpg',
-      customerName: 'John Smith',
-      time: '2:30 PM',
-      pickup: 'Central Mall',
-      dropoff: 'Airport Terminal',
-      fare: 22.0,
-    },
-    {
-      img: 'assets/user2.jpg',
-      customerName: 'Emma Wilson',
-      time: '4:15 PM',
-      pickup: 'University Campus',
-      dropoff: 'City Center',
-      fare: 15.75,
-    },
-  ];
+  ngOnInit() {
+    this.loadDriverData();
+  }
+
+  loadDriverData() {
+    this._employeService
+      .getEmployeeBookings()
+      .pipe(
+        map((response) => {
+          const bookings = response ?? [];
+
+          const todayDateStr = new Date().toISOString().slice(0, 10);
+
+          this.currentBookings = bookings.filter(
+            (b: { travelDate: string }) => b.travelDate === todayDateStr
+          );
+
+          this.upcomingRides = bookings.filter(
+            (b: { travelDate: string }) => b.travelDate > todayDateStr
+          );
+
+          console.log('Current Bookings:', this.currentBookings);
+          console.log('Upcoming Rides:', this.upcomingRides);
+
+          this.rides = bookings.length;
+          return bookings;
+        })
+      )
+      .subscribe({
+        next: (bookings) => {
+          console.log('Bookings loaded:', bookings);
+        },
+        error: (err) => {
+          console.error('Error loading bookings:', err);
+          this.currentBookings = [];
+          this.upcomingRides = [];
+        },
+      });
+  }
 }

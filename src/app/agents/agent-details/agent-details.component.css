@@ -1,0 +1,33 @@
+.dashboard-container {
+  max-width: 600px;
+  margin: auto;
+  padding: 16px;
+  font-family: "Segoe UI", sans-serif;
+  background-color: #f9fafb;
+}
+
+.driver-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.driver-card {
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+  padding: 12px 16px;
+  border-radius: 10px;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.05);
+}
+
+.driver-name {
+  font-weight: 500;
+  margin: 0;
+}
+
+.driver-location {
+  color: #4c759a;
+  font-size: 14px;
+  margin: 2px 0 0 0;
+}

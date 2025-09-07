@@ -1,0 +1,39 @@
+<div class="inquiry-card" *ngFor="let inquiry of inquiries">
+  <div class="inquiry-header">
+    <div class="customer-name">{{ inquiry.customerName }}</div>
+    <div class="toggle-buttons">
+      <button
+        class="btn confirm"
+        [class.active]="inquiry.isConfirmed"
+        (click)="toggleConfirm(inquiry)"
+        aria-label="Confirm"
+      >
+        ✓
+      </button>
+      <button
+        class="btn reject"
+        [class.active]="inquiry.isRejected"
+        (click)="toggleReject(inquiry)"
+        aria-label="Reject"
+      >
+        ✕
+      </button>
+      <button
+        class="btn call"
+        (click)="callCustomer(inquiry.customerNumber)"
+        aria-label="Call Customer"
+      >
+        <span class="phone-icon">&#9742;</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="inquiry-details">
+    <span><b>Number:</b> {{ inquiry.customerNumber || "N/A" }}</span>
+    <span><b>From:</b> {{ inquiry.from || "N/A" }}</span>
+    <span><b>To:</b> {{ inquiry.to || "N/A" }}</span>
+    <span> <b>Date:</b> {{ inquiry.travelDate | date : "dd MMM, yyyy" }} </span>
+    <span><b>Pax:</b> {{ inquiry.pax }}</span>
+    <span><b>Vehicle:</b> {{ inquiry.vehicleName || "N/A" }}</span>
+  </div>
+</div>

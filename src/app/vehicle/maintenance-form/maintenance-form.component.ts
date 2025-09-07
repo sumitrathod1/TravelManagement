@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -10,10 +10,15 @@ import {
 } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatGridListModule } from '@angular/material/grid-list';
-import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import {
+  MAT_DIALOG_DATA,
+  MatDialog,
+  MatDialogModule,
+} from '@angular/material/dialog';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
+import { VehicleService } from '../../services/vehicle.service';
 
 @Component({
   selector: 'app-maintenance-form',
@@ -36,12 +41,18 @@ import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
 })
 export class MaintenanceFormComponent {
   maintenanceForm!: FormGroup;
-  maintenanceType: string[] = [];
+  maintenanceTypes = ['oilChange', 'TireChange', 'Service'];
 
-  constructor(private _fb: FormBuilder, private _dialog: MatDialog) {
+  constructor(
+    private _fb: FormBuilder,
+    private _dialog: MatDialog,
+    private _vehicleService: VehicleService,
+    @Inject(MAT_DIALOG_DATA) public data: any
+  ) {
     this.maintenanceForm = _fb.group({
+      vehicleID: data?.vehicleID || '',
       serviceDate: '',
-      dueDate: '',
+      nextduedate: '',
       description: '',
       cost: '',
       maintenanceType: '',
@@ -50,8 +61,17 @@ export class MaintenanceFormComponent {
 
   onMaintenanceFormSubmit() {
     if (this.maintenanceForm.valid) {
-      // Handle form submission logic here
       console.log('Maintenance Form Submitted:', this.maintenanceForm.value);
+      this._vehicleService
+        .addMaintenance(this.maintenanceForm.value)
+        .subscribe({
+          next: (val: any) => {
+            console.log('Maintenance added successfully:', val);
+          },
+          error: (err: any) => {
+            console.error('Error adding maintenance:', err);
+          },
+        });
       this._dialog.closeAll();
     }
   }

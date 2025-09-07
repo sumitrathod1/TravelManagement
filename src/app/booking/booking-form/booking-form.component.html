@@ -8,7 +8,7 @@
           <mat-select formControlName="agent">
             <mat-option>None</mat-option>
             @for (atypes of agentTypes; track atypes) {
-            <mat-option [value]="atypes.name">{{ atypes.name }}</mat-option>
+            <mat-option [value]="atypes.AgentId">{{ atypes.name }}</mat-option>
             }
           </mat-select>
         </mat-form-field>
@@ -30,7 +30,7 @@
       <div class="col-sm-6">
         <mat-form-field class="col-ms-6" appearance="outline" style="flex: 1">
           <mat-label>Customer Number</mat-label>
-          <input matInput type="number" formControlName="customerNumber" />
+          <input matInput type="text" formControlName="customerNumber" />
         </mat-form-field>
       </div>
     </div>
@@ -93,7 +93,7 @@
       <div class="col-sm-6">
         <mat-form-field appearance="outline" style="flex: 1">
           <mat-label>From</mat-label>
-          <mat-select formControlName="From">
+          <mat-select formControlName="from">
             <mat-option>None</mat-option>
             @for (vtypes of states; track vtypes) {
             <mat-option [value]="vtypes">{{ vtypes }}</mat-option>
@@ -185,6 +185,8 @@
     style="display: flex; justify-content: flex-end; gap: 16px"
   >
     <button mat-raised-button (click)="clossBooking()">Cancel</button>
-    <button mat-raised-button color="primary" type="submit">Submit</button>
+    <button mat-raised-button color="primary" type="submit">
+      {{ bookingForm.get("id")?.value ? "Update" : "Submit" }}
+    </button>
   </div>
 </form>

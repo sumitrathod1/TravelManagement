@@ -44,7 +44,7 @@
     </div>
 
     <div class="d-flex justify-content-between align-items-center mt-3 p-2">
-      <h3>Recent Bookings</h3>
+      <h3>Today's Bookings</h3>
     </div>
 
     <div class="booking-card" *ngFor="let booking of bookings | slice : 0 : 4">
@@ -79,7 +79,43 @@
       </div>
     </div>
 
-    <div class="row g-4">
+    <!-- <div class="d-flex justify-content-between align-items-center mt-3 p-2">
+      <h3>Upcoming Bookings</h3>
+    </div>
+
+    <div
+      class="booking-card"
+      *ngFor="let booking of upcomingBookings | slice : 0 : 4"
+    >
+      <div class="d-flex">
+        <div
+          class="status-bar"
+          [ngStyle]="{ 'background-color': booking.color }"
+        ></div>
+
+        <div class="booking-info ms-2 flex-grow-1">
+          <div class="d-flex justify-content-between">
+            <div>
+              <h3 class="mb-1">{{ booking.customer.customerName }}</h3>
+              <h4 class="text-muted small mb-0">
+                {{ booking.customer.customerNumber }}
+              </h4>
+              <h4 class="text-muted small mb-0">
+                {{ booking.travelDate }}: {{ booking.traveltime }}
+              </h4>
+            </div>
+            <div class="text-end">
+              <h2 class="mt-2">₹{{ booking.amount }}</h2>
+              <h4 class="text-muted small mb-0">
+                {{ booking.vehicle.vehicleName }}
+              </h4>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div> -->
+
+    <!-- <div class="row g-4">
       <div class="col-12 col-md-6">
         <div class="card p-3 chart-card shadow-effect">
           <h5>Earnings Trend</h5>
@@ -91,6 +127,6 @@
           ></canvas>
         </div>
       </div>
-    </div>
+    </div> -->
   </div>
 </div>

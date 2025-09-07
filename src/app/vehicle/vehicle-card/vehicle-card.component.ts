@@ -4,6 +4,7 @@ import { VehicleService } from '../../services/vehicle.service';
 import { MatDialog } from '@angular/material/dialog';
 import { MaintenanceFormComponent } from '../maintenance-form/maintenance-form.component';
 import { ExpenseFormComponent } from '../expense-form/expense-form.component';
+import { DocumentFormComponent } from '../document-form/document-form.component';
 
 @Component({
   selector: 'app-vehicle-card',
@@ -34,13 +35,19 @@ export class VehicleCardComponent {
     });
   }
 
-  maintenance() {
-    this._dialog.open(MaintenanceFormComponent);
+  maintenance(vehicleId: number) {
+    this._dialog.open(MaintenanceFormComponent, {
+      data: { vehicleID: vehicleId },
+    });
   }
-  expence() {
-    this._dialog.open(ExpenseFormComponent);
+  expence(vehicleId: number) {
+    this._dialog.open(ExpenseFormComponent, {
+      data: { vehicleID: vehicleId },
+    });
   }
-  documentShedule() {
-    this._dialog.open(MaintenanceFormComponent);
+  documentShedule(vehicleId: number) {
+    this._dialog.open(DocumentFormComponent, {
+      data: { vehicleID: vehicleId },
+    });
   }
 }

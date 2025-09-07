@@ -20,7 +20,11 @@
       <div class="col-sm-6">
         <mat-form-field class="col-ms-6" appearance="outline">
           <mat-label>Next Due Date</mat-label>
-          <input matInput [matDatepicker]="picker2" formControlName="dueDate" />
+          <input
+            matInput
+            [matDatepicker]="picker2"
+            formControlName="nextduedate"
+          />
           <mat-datepicker-toggle
             matSuffix
             [for]="picker2"
@@ -56,7 +60,7 @@
           <mat-label>Maintenance Type</mat-label>
           <mat-select formControlName="maintenanceType">
             <mat-option>None</mat-option>
-            @for (mtypes of maintenanceType; track mtypes) {
+            @for (mtypes of maintenanceTypes; track mtypes) {
             <mat-option [value]="mtypes">{{ mtypes }}</mat-option>
             }
           </mat-select>

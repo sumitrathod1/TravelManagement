@@ -1,0 +1,12 @@
+<div class="dashboard-container">
+  <button (click)="printPage()"> Print</button>
+  <div class="driver-list">
+    <div class="driver-card" *ngFor="let booking of bookings">
+      <div>
+        <p class="driver-name">{{ booking.bookingType }}</p>
+        <p class="driver-location">Date: {{ booking.travelDate }}</p>
+        <p class="driver-location">Amount: {{ booking.amount }}</p>
+      </div>
+    </div>
+  </div>
+</div>

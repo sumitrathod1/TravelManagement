@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -14,6 +14,7 @@ import {
 import { MatButtonModule } from '@angular/material/button';
 import { MatGridListModule } from '@angular/material/grid-list';
 import {
+  MAT_DIALOG_DATA,
   MatDialog,
   MatDialogModule,
   MatDialogRef,
@@ -21,6 +22,7 @@ import {
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
+import { VehicleService } from '../../services/vehicle.service';
 
 @Component({
   selector: 'app-expense-form',
@@ -43,17 +45,35 @@ import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
 })
 export class ExpenseFormComponent {
   expenseForm!: FormGroup;
-  CategoryType: string[] = ['sss', 'sss', 'sss', 'sss', 'sss'];
+  CategoryType: string[] = ['Repair', 'Accident', 'Towing', 'DocumentRenew'];
 
-  constructor(private _fb: FormBuilder, private _dialog: MatDialog) {
+  constructor(
+    private _fb: FormBuilder,
+    private _dialog: MatDialog,
+    private _vehicleService: VehicleService,
+    @Inject(MAT_DIALOG_DATA) public data: any
+  ) {
     this.expenseForm = _fb.group({
+      vehicleID: data?.vehicleID || '',
       categoryType: '',
       amount: '',
       expenseDate: '',
     });
   }
 
-  onExpenseFormSubmit() {}
+  onExpenseFormSubmit() {
+    if (this.expenseForm.valid) {
+      this._vehicleService.addExpence(this.expenseForm.value).subscribe({
+        next: (res: any) => {
+          console.log(this.expenseForm.value, res);
+        },
+        error: (err) => {
+          console.error('Error adding expense:', err);
+        },
+      });
+      this._dialog.closeAll();
+    }
+  }
 
   onCloseExpense() {
     this._dialog.closeAll();

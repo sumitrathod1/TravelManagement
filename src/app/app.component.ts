@@ -12,6 +12,8 @@ import { RouterModule } from '@angular/router';
 import { BookingTableComponent } from './booking/booking-table/booking-table.component';
 import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
+import { EmployeeService } from './services/employee.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-root',
@@ -25,6 +27,7 @@ import { HeaderComponent } from './header/header.component';
     MatButtonModule,
     HomeComponent,
     RouterLink,
+    CommonModule,
     FooterComponent,
     HeaderComponent,
   ],
@@ -33,6 +36,10 @@ import { HeaderComponent } from './header/header.component';
 })
 export class AppComponent {
   title = 'TravelManagement';
+  userRole: string | null = null;
 
-  constructor() {}
+  constructor(private _employeService: EmployeeService) {}
+  ngOnInit(): void {
+    this.userRole = this._employeService.getRoleFromToken();
+  }
 }

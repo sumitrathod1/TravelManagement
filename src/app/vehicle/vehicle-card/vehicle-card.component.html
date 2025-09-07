@@ -23,17 +23,26 @@
           </div>
           <div class="row mt-3">
             <div class="col-4">
-              <button class="btn btn-success w-100" (click)="maintenance()">
+              <button
+                class="btn btn-success w-100"
+                (click)="maintenance(vehicle.vehicleId)"
+              >
                 <i class="bi bi-wrench-adjustable"></i>
               </button>
             </div>
             <div class="col-4">
-              <button class="btn btn-danger w-100" (click)="expence()">
+              <button
+                class="btn btn-danger w-100"
+                (click)="expence(vehicle.vehicleId)"
+              >
                 <i class="bi bi-cash-stack"></i>
               </button>
             </div>
             <div class="col-4">
-              <button class="btn btn-primary w-100" (click)="documentShedule()">
+              <button
+                class="btn btn-primary w-100"
+                (click)="documentShedule(vehicle.vehicleId)"
+              >
                 <i class="bi bi-receipt-cutoff"></i>
               </button>
             </div>

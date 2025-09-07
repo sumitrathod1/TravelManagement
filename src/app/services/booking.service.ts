@@ -8,10 +8,9 @@ import { shareReplay } from 'rxjs/operators';
 })
 export class BookingService {
   //private baseUrl: string = 'https://localhost:7183/api/Booking/';
-  private baseUrl: string =
-    'https://travelmanagement-backend.onrender.com/api/Booking/';
+  //private baseUrl: string = 'https://travelmanagement-backend.onrender.com/api/Booking/';
 
-  //private baseUrl: string = 'http://192.168.133.17:5006/api/Booking/';
+  baseUrl: string = 'http://ezygoa.icu/api/Booking/';
   private bookingsCache$?: Observable<any>;
 
   private bookingCountSubject = new BehaviorSubject<number>(0);
@@ -24,8 +23,9 @@ export class BookingService {
 
   newBooking(booking: any): Observable<any> {
     const bookingData = {
+      bookingId: booking.bookingId ?? 0,
       customerName: booking.customerName,
-      customerNumber: booking.customerNumber,
+      customerNumber: booking.customerNumber ?? '',
       bookingTime: booking.travelTime?.split(' ')[0],
       from: booking.From,
       to: booking.to,
@@ -33,11 +33,11 @@ export class BookingService {
       amount: booking.amount,
       payment: booking.payment ? booking.payment : 0,
       bookingType: booking.bookingType,
-      alternateNumber: 0,
+      alternateNumber: booking.alternateNumber ?? '',
       bookingStatus: 'string',
       externalEmployee: 'string',
-      externalEmployeeNumber: 0,
-      travelAgentName: booking.agent ?? 0,
+      externalEmployeeNumber: booking.externalEmployeeNumber ?? '',
+      AgentId: booking.agent ?? '',
       customerWillPay: booking.customerPay ?? 0,
       ownerWillPay: booking.ownerPay ? +booking.ownerPay : 0,
       // bookingDate: booking.travelDate
