@@ -7,8 +7,16 @@
           <mat-label>Agents</mat-label>
           <mat-select formControlName="agent">
             <mat-option>None</mat-option>
+            <!-- <mat-option
+              *ngFor="let atypes of agentTypes"
+              [value]="atypes.AgentId"
+            >
+              {{ atypes.name }}
+            </mat-option> -->
             @for (atypes of agentTypes; track atypes) {
-            <mat-option [value]="atypes.AgentId">{{ atypes.name }}</mat-option>
+            <mat-option [value]="atypes.agentId ? +atypes.agentId : null">{{
+              atypes.name
+            }}</mat-option>
             }
           </mat-select>
         </mat-form-field>
@@ -43,7 +51,7 @@
             type="number"
             placeholder="No Pax"
             min="1"
-            formControlName="Pax"
+            formControlName="pax"
           />
         </mat-form-field>
       </div>
@@ -119,7 +127,7 @@
       <div class="col-sm-6">
         <mat-form-field appearance="outline" style="flex: 1">
           <mat-label>Vehicle</mat-label>
-          <mat-select formControlName="vehcile">
+          <mat-select formControlName="vehicle">
             <mat-option>None</mat-option>
             @for (vhtypes of vehcilesType; track vhtypes) {
             <mat-option [value]="vhtypes.vehicleId">{{

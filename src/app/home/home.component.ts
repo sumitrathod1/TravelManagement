@@ -9,13 +9,14 @@ import { EmployeeService } from '../services/employee.service';
 import { CalendarComponent } from '../calendar/calendar.component';
 import { ChartConfiguration, ChartOptions, ChartType } from 'chart.js';
 import { NgChartsModule } from 'ng2-charts';
-
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 @Component({
   selector: 'app-home',
   standalone: true,
   providers: [provideNativeDateAdapter()],
   imports: [
     MatDatepickerModule,
+    MatProgressSpinnerModule,
     MatDatepickerModule,
     FullCalendarModule,
     CommonModule,

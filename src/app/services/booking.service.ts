@@ -28,9 +28,9 @@ export class BookingService {
       customerName: booking.customerName,
       customerNumber: booking.customerNumber ?? '',
       bookingTime: booking.travelTime?.split(' ')[0],
-      from: booking.From,
+      from: booking.from,
       to: booking.to,
-      pax: booking.Pax,
+      pax: booking.pax,
       amount: booking.amount,
       payment: booking.payment ? booking.payment : 0,
       bookingType: booking.bookingType,
@@ -38,9 +38,9 @@ export class BookingService {
       bookingStatus: 'string',
       externalEmployee: 'string',
       externalEmployeeNumber: booking.externalEmployeeNumber ?? '',
-      AgentId: booking.agent ?? '',
+      TravelAgentId: booking.agent ? +booking.agent : null,
       customerWillPay: booking.customerPay ?? 0,
-      ownerWillPay: booking.ownerPay ? +booking.ownerPay : 0,
+      ownerWillPay: booking.ownerPay ?? 0,
       // bookingDate: booking.travelDate
       //   ? new Date(booking.travelDate).toISOString().split('T')[0]
       //   : null,
@@ -51,14 +51,17 @@ export class BookingService {
             return d.toISOString().split('T')[0];
           })()
         : null,
-      vehicleId: booking.vehcile,
+      vehicleId: booking.vehicle,
       userId: booking.driver,
     };
 
     console.log('Booking data to be sent (bookingData object):', bookingData);
-    return this._http
-      .post(`${this.baseUrl}New-Booking`, bookingData)
-      .pipe(tap(() => this.bookingUpdatedSubject.next()));
+    return this._http.post(`${this.baseUrl}New-Booking`, bookingData).pipe(
+      tap(() => {
+        this.clearBookingsCache();
+        this.bookingUpdatedSubject.next();
+      })
+    );
   }
 
   // loadBookings(): Observable<any> {
@@ -80,5 +83,8 @@ export class BookingService {
 
   updateBookingCount(count: number) {
     this.bookingCountSubject.next(count);
+  }
+  notifyBookingUpdated(newBooking: any) {
+    this.bookingUpdatedSubject.next(newBooking);
   }
 }

@@ -23,6 +23,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
 import { VehicleService } from '../../services/vehicle.service';
+import { provideToastr, ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-expense-form',
@@ -51,6 +52,7 @@ export class ExpenseFormComponent {
     private _fb: FormBuilder,
     private _dialog: MatDialog,
     private _vehicleService: VehicleService,
+    private _toastr: ToastrService,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {
     this.expenseForm = _fb.group({
@@ -65,10 +67,10 @@ export class ExpenseFormComponent {
     if (this.expenseForm.valid) {
       this._vehicleService.addExpence(this.expenseForm.value).subscribe({
         next: (res: any) => {
-          console.log(this.expenseForm.value, res);
+          this._toastr.success('Expense added successfully ✅', 'Success');
         },
         error: (err) => {
-          console.error('Error adding expense:', err);
+          this._toastr.error('Error adding expense', 'Failed ❌');
         },
       });
       this._dialog.closeAll();

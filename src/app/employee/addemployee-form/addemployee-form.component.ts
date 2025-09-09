@@ -21,6 +21,7 @@ import { HttpClient } from '@angular/common/http';
 import { Dialog } from '@angular/cdk/dialog';
 import { EmployeeService } from '../../services/employee.service';
 import { provideNativeDateAdapter } from '@angular/material/core';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-addemployee-form',
@@ -37,6 +38,7 @@ import { provideNativeDateAdapter } from '@angular/material/core';
     ReactiveFormsModule,
     MatButtonModule,
     MatGridListModule,
+    CommonModule,
   ],
   providers: [provideNativeDateAdapter()],
   templateUrl: './addemployee-form.component.html',
@@ -53,7 +55,7 @@ export class AddemployeeFormComponent {
     this.employeeForm = _fb.group({
       EmployeeName: '',
       UserName: '',
-      DOB: '',
+      DOB: null,
       Address: '',
       Role: '',
       Licence: '',

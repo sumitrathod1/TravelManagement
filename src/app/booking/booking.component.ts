@@ -18,11 +18,13 @@ import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
 import { ChartConfiguration, ChartOptions, ChartType } from 'chart.js';
 import { NgChartsModule } from 'ng2-charts';
 import { BookingService } from '../services/booking.service';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 @Component({
   selector: 'app-booking',
   standalone: true,
   imports: [
     NgxMaterialTimepickerModule,
+    MatProgressSpinnerModule,
     FormsModule,
     RouterModule,
     MatNativeDateModule,
@@ -55,6 +57,14 @@ export class BookingComponent {
       this.totalBookings = count;
     });
 
+    this._bookingService.bookingUpdated$.subscribe(() => {
+      this.loadData();
+    });
+
+    this.loadData();
+  }
+
+  private loadData() {
     this._bookingService.loadBookings().subscribe({
       next: (data) => {
         const bookings = data.bookings || [];

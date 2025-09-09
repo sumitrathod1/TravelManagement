@@ -22,6 +22,7 @@ import { BookingService } from '../../services/booking.service';
 import { EmployeeService } from '../../services/employee.service';
 import { VehicleService } from '../../services/vehicle.service';
 import { AgentService } from '../../services/agent.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-booking-form',
@@ -29,6 +30,7 @@ import { AgentService } from '../../services/agent.service';
   imports: [
     NgxMaterialTimepickerModule,
     FormsModule,
+    CommonModule,
     MatNativeDateModule,
     MatFormFieldModule,
     MatDatepickerModule,
@@ -89,9 +91,9 @@ export class BookingFormComponent {
       amount: data?.amount ?? '',
       bookingType: data?.bookingType ?? '',
       payment: data?.payment ?? '',
-      ownerPay: data?.ownerPay ?? '',
-      customerPay: data?.customerPay ?? '',
-      agent: data?.travelAgentId ?? '',
+      ownerPay: data?.ownerPay ?? null,
+      customerPay: data?.customerPay ?? null,
+      agent: data?.travelAgentId ? Number(data.travelAgentId) : null,
     });
 
     if (data) {
@@ -181,13 +183,14 @@ export class BookingFormComponent {
       console.log(this.bookingForm.value);
       this._bookingServicea.newBooking(this.bookingForm.value).subscribe({
         next: (val: any) => {
-          alert('Booking is added successfully');
-          this._dilog.closeAll();
+          this._bookingServicea.notifyBookingUpdated(val.newBooking);
+          console.log('Booking is added successfully', val.message, val);
         },
         error(err: any) {
           console.error(err);
         },
       });
+      this._dilog.closeAll();
     }
   }
   clossBooking() {

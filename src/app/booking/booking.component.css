@@ -1,3 +1,24 @@
+.loader-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.8);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.loader-text {
+  margin-top: 12px;
+  font-size: 16px;
+  font-weight: 500;
+  color: #4f46e5; /* Indigo accent */
+}
+
 body,
 html {
   margin: 0;

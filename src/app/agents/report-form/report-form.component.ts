@@ -104,7 +104,7 @@ export class ReportFormComponent {
       ? fromDate.toISOString().substring(0, 10)
       : undefined;
     let toDateStr = toDate ? toDate.toISOString().substring(0, 10) : undefined;
-
+    console.log(fromDateStr, toDateStr);
     this._agents
       .downloadAgentReport(this.agentId, fromDateStr, toDateStr)
       .subscribe({

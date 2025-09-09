@@ -26,13 +26,15 @@ export class EmployeeService {
         ? new Date(employees.DOB).toISOString().split('T')[0]
         : null,
 
-      Role: employees.Role === 'Admin' ? 0 : 1,
+      Role: employees.Role === 'Admin' ? 1 : 0,
       Licence:
         employees.Licence === 'LMVC'
           ? 0
           : employees.Licence === 'Badge'
           ? 1
-          : 2,
+          : employees.Licence === 'HeavyBadge'
+          ? 2
+          : null,
     };
 
     console.log('Employee data to be sent (emp object):', emp);

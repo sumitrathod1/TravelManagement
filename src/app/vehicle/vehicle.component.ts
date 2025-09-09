@@ -6,6 +6,7 @@ import { ExpenseFormComponent } from './expense-form/expense-form.component';
 import { MaintenanceFormComponent } from './maintenance-form/maintenance-form.component';
 import { RouterModule } from '@angular/router';
 import { VehicleService } from '../services/vehicle.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-vehicle-form',
@@ -28,7 +29,8 @@ export class VehicleComponent {
   }
   constructor(
     private _dilog: MatDialog,
-    private _vehicleService: VehicleService
+    private _vehicleService: VehicleService,
+    private _toastr: ToastrService
   ) {}
 
   documentForm() {

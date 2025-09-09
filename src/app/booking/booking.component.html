@@ -1,5 +1,7 @@
-<div *ngIf="isLoading" class="loader-container">
-  <div class="spinner"></div>
+<div *ngIf="isLoading" class="loader-overlay">
+  <mat-progress-spinner diameter="60" color="primary" mode="indeterminate">
+  </mat-progress-spinner>
+  <p class="loader-text">Loading, please wait...</p>
 </div>
 <div *ngIf="!isLoading">
   <div class="container mt-4">
